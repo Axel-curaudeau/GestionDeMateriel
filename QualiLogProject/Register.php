@@ -19,7 +19,7 @@ include("../inc/constantes.inc.php"); ?>
     $Mail = $_POST["Mail"];
     $MotDePasse = password_hash($_POST["MotDePasse"], PASSWORD_DEFAULT);
 
-    $sql = 'SELECT IdPers FROM wl_users WHERE Mail = :Mail';
+    $sql = 'SELECT UserID FROM wl_users WHERE Mail = :Mail';
     $resStat = $mysqlClient->prepare($sql);
     $resStat->execute([
         'Mail' => $Mail]);
@@ -40,15 +40,11 @@ include("../inc/constantes.inc.php"); ?>
     if($exec)
     {
         header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=registered");
+        
     }
     else
     {
         echo('Erreur Requete SQL');
-        echo($sql);
-        echo($FirstName);
-        echo($LastName);
-        echo($Mail);
-        echo($MotDePasse);
     }
 
     ?>

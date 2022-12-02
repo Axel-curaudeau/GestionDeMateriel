@@ -12,15 +12,15 @@ include("../inc/constantes.inc.php");
 </head>    
 <body>
     <?php
-    if(!isset($_POST["Mail"]) || !isset($_POST["MotDePasse"])) {
-        header("Location: ".DOMAIN_URL."/ProjetQualiLog/LoginPage.php?alerte=failConnect");
+    if(!isset($_POST["Mail"]) || !isset($_POST["Password"])) {
+        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
         return;
     }
 
     include("../inc/bddconnect.inc.php");
 
     $Mail = $_POST["Mail"];
-    $MotDePasse = $_POST["MotDePasse"];
+    $Password = $_POST["Password"];
 
     $sql = 'SELECT * FROM WL_Users WHERE Mail = :Mail';
     $resStat = $mysqlClient->prepare($sql);
@@ -28,16 +28,22 @@ include("../inc/constantes.inc.php");
         'Mail' => $Mail]);
     $res = $resStat->fetchAll();
 
-    if (password_verify($MotDePasse, $res[0]['Password']) || password_verify($MotDePasse, $res[0]['resetPswd'])){
+    if (count($res) == 0) {
+        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
+        return;
+    }
+
+    if (password_verify($Password, $res[0]['Pswd']) || password_verify($Password, $res[0]['resetPswd'])){
         $_SESSION['USERID'] = $res[0]['USERID'];
         $_SESSION['MAIL'] = $Mail;
         $res = $mysqlClient->prepare($sql);
         $exec = $res->execute(['IdPers' => $_SESSION['USERID']]);
-        header("Location: ".DOMAIN_URL."/ProjetQualiLog/Home.php");
+        header("Location: ".DOMAIN_URL."/QualiLogProject/Home.php");
     }
     else{
         $_SESSION['LOGGED_MAIL_FAIL'] = $Mail;
-        header("Location: ".DOMAIN_URL."/ProjetQualiLog/LoginPage.php?alerte=failConnect");
+        echo($Password);
+        //header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
     }
 
     ?>

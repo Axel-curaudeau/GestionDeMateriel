@@ -21,7 +21,7 @@ include("../inc/constantes.inc.php")?>
 
     <form action="Register.php" method="POST">
         <div class="container" align="left">  
-            <h1 style="white-space: nowrap; margin-top: 0;">Inscription <br> Gestion de matériel</h1>
+            <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Inscription <br> Gestion de matériel</h1>
             <label for="Prenom">Prénom</label>
             <input type="text" placeholder="Prénom" name="FirstName" required>
             <label for="Nom">Nom</label>
