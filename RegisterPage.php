@@ -5,8 +5,8 @@ include("../inc/constantes.inc.php")?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>OrgaEDT | Sign Up</title>  
-    <link rel="stylesheet" href="style/styleOrgaEDT.css" />
+    <title>Gestion de matériel | Sign Up</title>  
+    <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
@@ -21,7 +21,11 @@ include("../inc/constantes.inc.php")?>
 
     <form action="Register.php" method="POST">
         <div class="container" align="left">  
-            <h1 style="white-space: nowrap; margin-top: 0;">Inscription &agrave; OrgaEDT</h1>
+            <h1 style="white-space: nowrap; margin-top: 0;">Inscription <br> Gestion de matériel</h1>
+            <label for="Prenom">Prénom</label>
+            <input type="text" placeholder="Prénom" name="FirstName" required>
+            <label for="Nom">Nom</label>
+            <input type="text" placeholder="Nom" name="LastName" required>
             <label for="Mail">Adresse Mail : </label>   
             <input type="email" placeholder="adresse@email.fr" name="Mail" required>
             <label for="MotDePasse">Mot de Passe :</label>   

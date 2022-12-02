@@ -5,8 +5,8 @@ include("../inc/constantes.inc.php"); ?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>OrgaEDT | Sign Up</title>  
-    <link rel="stylesheet" href="style/styleOrgaEDT.css" />
+    <title>Gestion de matériel | Sign Up</title>  
+    <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
 <body>
@@ -14,10 +14,12 @@ include("../inc/constantes.inc.php"); ?>
 
     include("../inc/bddconnect.inc.php");
 
+    $FirstName = $_POST['FirstName'];
+    $LastName = $_POST['LastName'];
     $Mail = $_POST["Mail"];
     $MotDePasse = password_hash($_POST["MotDePasse"], PASSWORD_DEFAULT);
 
-    $sql = 'SELECT IdPers FROM OrgaEDT_Personne WHERE Mail = :Mail';
+    $sql = 'SELECT IdPers FROM wl_users WHERE Mail = :Mail';
     $resStat = $mysqlClient->prepare($sql);
     $resStat->execute([
         'Mail' => $Mail]);
@@ -25,14 +27,14 @@ include("../inc/constantes.inc.php"); ?>
 
     if (count($res) != 0)
     {
-        header("Location: ".DOMAIN_URL."/OrgaEDT/RegisterPage.php?alerte=mailFail");
+        header("Location: ".DOMAIN_URL."/qualilogproject/RegisterPage.php?alerte=mailFail");
         return;
     }
 
-    $sql = 'INSERT INTO OrgaEDT_Personne (Mail,MotDePasse) VALUES (?,?)';
+    $sql = 'INSERT INTO wl_users (FirstName,LastName,Mail,Pswd) VALUES (?,?,?,?)';
     $res = $mysqlClient->prepare($sql);
 
-    $exec = $res->execute([$Mail, $MotDePasse]);
+    $exec = $res->execute([$FirstName,$LastName,$Mail,$MotDePasse]);
 
     if($exec)
     {
@@ -49,11 +51,13 @@ include("../inc/constantes.inc.php"); ?>
                                                               MotDePasse : '.$MotDePasse,
                                                               implode("\r\n", $headers));
                                                               */
-        header("Location: ".DOMAIN_URL."/OrgaEDT/LoginPage.php?alerte=registered");
+        header("Location: ".DOMAIN_URL."/qualilogproject/LoginPage.php?alerte=registered");
     }
     else
     {
         echo('Erreur Requete SQL');
+        echo($sql);
+        
     }
 
     ?>

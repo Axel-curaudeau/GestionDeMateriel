@@ -1,0 +1,20 @@
+CREATE TABLE wl_Users(
+    UserId INT AUTO_INCREMENT,
+    FirstName VARCHAR(50) ,
+    LastName VARCHAR(50) ,
+    Mail VARCHAR(50) ,
+    Password VARCHAR(50) ,
+    IsAdmin BOOLEAN,
+    PRIMARY KEY(UserId)
+ );
+ 
+ CREATE TABLE wl_Material(
+    MaterialId INT AUTO_INCREMENT,
+    Name VARCHAR(50) ,
+    Version VARCHAR(50) ,
+    Reference VARCHAR(50) ,
+    UserId INT,
+    PRIMARY KEY(MaterialId),
+    FOREIGN KEY(UserId) REFERENCES Users(UserId)
+ );
+ 
