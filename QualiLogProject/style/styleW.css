@@ -183,28 +183,24 @@ summary {
 }
 
 .Tableau {
-    width: 90%;
+    width: 85%;
     border-collapse: collapse;
-    border: 2px solid;
+    border: 3px solid;
     margin: 10px auto;
 }
 
-.TableauTitreColonnes {
-    border: 2px solid;
-}
-
 .TableauTitreItem {
-    border: 2px solid black;
+    border: 3px solid black;
     text-align: center;
     font-weight: bold;
     background-color: #a4d1c8;
 }
 
-.TableauItem {
+.Tableau td {
     border: 1px solid;
     text-align: center;
 }
 
-.TableauBouton {
-    text-align: center;
+.Tableau tr:hover {
+    background-color: rgb(179, 24, 24);
 }

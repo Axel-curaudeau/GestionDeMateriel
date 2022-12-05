@@ -18,7 +18,7 @@ include("../inc/bddconnect.inc.php")?>
     }
     ?>
 
-<div class="bandeau">
+    <div class="bandeau">
         <div class="bandeauElement">
             <a href="ProfilPage.php">Mon Profil</a>
         </div>
@@ -32,12 +32,16 @@ include("../inc/bddconnect.inc.php")?>
 
     <h1>Gestion de Comptes</h1>
     <h2>Liste des comptes</h2>
+
+    
     <table class=Tableau>
         <tr class=TableauTitreColonnes>
             <th class=TableauTitreItem>Prénom</th>
             <th class=TableauTitreItem>Nom</th>
             <th class=TableauTitreItem>Mail</th>
             <th class=TableauTitreItem>Admin</th>
+            <th class=TableauTitreItem></th>            
+
         </tr>
         <?php
             $sql = 'SELECT * FROM wl_users;';
@@ -54,15 +58,12 @@ include("../inc/bddconnect.inc.php")?>
                 } else {
                     echo "<td class=TableauItem>Non</td>";
                 }
+                echo "<td><a>Modifier</a><a>Supprimer</a></td>";
                 echo "</tr>";
             }
         ?>
     </table>
     <a href="RegisterPage.php">Créer un Compte</a>
-
-
-
-    <h1>Gestion du Matériel</h1>
 
 </body>
 </html>
