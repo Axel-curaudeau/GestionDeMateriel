@@ -202,5 +202,27 @@ summary {
 }
 
 .Tableau tr:hover {
-    background-color: rgb(179, 24, 24);
+    background-color: gray;
+}
+
+#TableauBoutons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: auto;
+}
+
+.ButtonIcon {
+    width: 25px;
+    height: 25px;
+}
+
+.ButtonSpan:hover {
+    filter: invert(100%);
+}
+
+.Titre {
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 1%;
 }

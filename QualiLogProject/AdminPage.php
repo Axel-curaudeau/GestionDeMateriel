@@ -30,8 +30,8 @@ include("../inc/bddconnect.inc.php")?>
         </div>
     </div>
 
-    <h1>Gestion de Comptes</h1>
-    <h2>Liste des comptes</h2>
+    <h1 class=Titre>Gestion de Comptes</h1>
+    <h2 class=Titre>Liste des comptes</h2>
 
     
     <table class=Tableau>
@@ -57,10 +57,23 @@ include("../inc/bddconnect.inc.php")?>
                     echo "<td class=TableauItem>Oui</td>";
                 } else {
                     echo "<td class=TableauItem>Non</td>";
-                }
-                echo "<td><a>Modifier</a><a>Supprimer</a></td>";
-                echo "</tr>";
-            }
+                }?>
+                <td>
+                    <div id=TableauBoutons>
+                        <a>
+                            <span class=ButtonSpan>
+                                <image src="./img/edit-button.png" class=ButtonIcon alt=Modifier></image>
+                            </span>
+                        </a>
+                        <a>
+                            <span class=ButtonSpan>
+                                <image src="./img/delete.png" class=ButtonIcon alt=Supprimer></image>
+                            </span>
+                        </a>
+                    <div>
+                </td>
+                </tr>
+            <?php }
         ?>
     </table>
     <a href="RegisterPage.php">Créer un Compte</a>
