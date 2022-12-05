@@ -1,5 +1,6 @@
 :root {
     --homeBackgroundColor: #f2fefa;
+    --WLcolor0: #c4ffeb;
     --WLcolor1: #69BBAA;
     --WLcolor2: #4A8A8B;
     --backgroundColor: #ffffff;
@@ -179,4 +180,31 @@ summary {
 .bandeau a:hover {
     color: var(--WLcolor1);
     font-size: 21px;
+}
+
+.Tableau {
+    width: 90%;
+    border-collapse: collapse;
+    border: 2px solid;
+    margin: 10px auto;
+}
+
+.TableauTitreColonnes {
+    border: 2px solid;
+}
+
+.TableauTitreItem {
+    border: 2px solid black;
+    text-align: center;
+    font-weight: bold;
+    background-color: #a4d1c8;
+}
+
+.TableauItem {
+    border: 1px solid;
+    text-align: center;
+}
+
+.TableauBouton {
+    text-align: center;
 }
