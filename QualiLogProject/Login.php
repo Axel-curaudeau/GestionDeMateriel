@@ -29,6 +29,7 @@ include("../inc/constantes.inc.php");
     $res = $resStat->fetchAll();
 
     if (count($res) == 0) {
+        $_SESSION['LOGGED_MAIL_FAIL'] = $Mail;
         header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
         return;
     }
@@ -40,8 +41,7 @@ include("../inc/constantes.inc.php");
     }
     else{
         $_SESSION['LOGGED_MAIL_FAIL'] = $Mail;
-        echo($Password);
-        //header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
+        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
     }
 
     ?>

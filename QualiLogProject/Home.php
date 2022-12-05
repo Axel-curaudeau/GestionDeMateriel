@@ -6,23 +6,38 @@ include("../inc/constantes.inc.php");?>
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <title>QualiLogProject | Home</title>  
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
-<body style="background-color: rgb(240,240,240);" id='body'>
+<body style="background-color: var(--homeBackgroundColor);" id='body'>
     <?php
-    if(!isset($_SESSION['MAIL']))
-    {
+    if(!isset($_SESSION['MAIL'])) {
         header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
         return;
     }
     ?>
 
-    <div class="content">
-        <div class="title">
-            Gestion de Matériel informatique
+    <div class="bandeau">
+        <div class="bandeauElement">
+            <a href="ProfilPage.php">Mon Profil</a>
+        </div>
+        <div class="bandeauElement">
+            <a href="#">Admin</a>
+        </div>
+        <div class="bandeauElement">
+            <a href="Deconnexion.php">Se Déconnecter</a>
         </div>
     </div>
+
+    <div class="listeMateriel">
+        <div class="Materiel">
+        </div>
+    </div>
+
+    <div style="height:10000px;">
+    </div>
+    <br>
+    <br>
 
 </body>
 </html>

@@ -42,7 +42,14 @@
         <div class="container", align="left">  
             <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Connexion<br>Gestion de Matériel</h1>
             <label for="Mail">Adresse Mail :</label>   
-            <input type="email" placeholder="adresse@mail.fr" name="Mail" id="Mail" <?php if(isset($_SESSION['LOGGED_MAIL_FAIL'])){echo('value="'.$_SESSION['LOGGED_MAIL_FAIL'].'"');} ?> required>  
+            <input type="email" placeholder="adresse@mail.fr" name="Mail" id="Mail"
+            <?php
+                if(isset($_SESSION['LOGGED_MAIL_FAIL'])) {
+                    echo('value="'.$_SESSION['LOGGED_MAIL_FAIL'].'"');
+                    unset($_SESSION['LOGGED_MAIL_FAIL']);
+                }
+            ?>
+            required>
             <label for="Password">Mot De Passe : </label>   
             <input type="password" placeholder="Mot de passe" name="Password" required>
             <a href="forgotPswd.php" style="color: var(--WLcolor2)">Mot de passe oublié</a>

@@ -29,6 +29,7 @@ include("../inc/constantes.inc.php"); ?>
 
     if(count($res) == 0)
     {
+        echo($Mail);
         header("Location: ".DOMAIN_URL."/QualiLogProject/forgotPswd.php?alerte=EmailError");
         return;
     }

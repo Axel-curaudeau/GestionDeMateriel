@@ -25,8 +25,7 @@ include("../inc/constantes.inc.php"); ?>
         'Mail' => $Mail]);
     $res = $resStat->fetchAll();
 
-    if (count($res) != 0)
-    {
+    if (count($res) != 0) {
         header("Location: ".DOMAIN_URL."/qualilogproject/RegisterPage.php?alerte=mailFail");
         return;
     }
@@ -37,13 +36,10 @@ include("../inc/constantes.inc.php"); ?>
 
     echo(strlen($MotDePasse));
 
-    if($exec)
-    {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=registered");
+    if($exec) {
+        header("Location: ".DOMAIN_URL."/qualilogproject/LoginPage.php?alerte=registered");
         
-    }
-    else
-    {
+    } else {
         echo('Erreur Requete SQL');
     }
 

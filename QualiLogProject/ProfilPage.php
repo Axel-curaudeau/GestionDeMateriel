@@ -6,14 +6,14 @@ include("../inc/constantes.inc.php");?>
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <title>OrgaEDT | Profil</title>  
-    <link rel="stylesheet" href="style/styleOrgaEDT.css">
+    <link rel="stylesheet" href="style/styleW.css">
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php
-    if(!isset($_SESSION['ORGAEDT_LOGGED_MAIL']))
+    if(!isset($_SESSION['MAIL']))
     {
-        header("Location: ".DOMAIN_URL."/OrgaEDT/LoginPage.php?alerte=notConnected");
+        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
         return;
     }
     ?>
@@ -31,9 +31,9 @@ include("../inc/constantes.inc.php");?>
     <form action="Profil.php" method="POST">
         <div class="boxlogin" align="center">
             <div class="container" align="left">  
-                <h1 style="white-space: nowrap; margin-top: 0;">Mon profil OrgaEDT</h1>
+                <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Mon profil</h1>
                 <label for="Mail">Email : </label>   
-                <input type="email" placeholder="adresse@email.fr" name="Mail" <?php echo('value="'.$_SESSION['ORGAEDT_LOGGED_MAIL'].'"'); ?> required>
+                <input type="email" placeholder="adresse@email.fr" name="Mail" <?php echo('value="'.$_SESSION['MAIL'].'"'); ?> required>
                 <label for="AncienMotDePasse">Ancien Mot de Passe : </label>   
                 <input type="password" placeholder="Mot de Passe" name="AncienMotDePasse" required>
                 <label for="NouveauMotDePasse">Nouveau Mot de Passe : </label>   

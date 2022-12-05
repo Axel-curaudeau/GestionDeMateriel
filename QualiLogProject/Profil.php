@@ -12,9 +12,9 @@ include("../inc/constantes.inc.php");?>
 <body>
 	<?php
 
-		if(!isset($_SESSION['ORGAEDT_LOGGED_MAIL']))
+		if(!isset($_SESSION['MAIL']))
 	    {
-	        header("Location: ".DOMAIN_URL."/OrgaEDT/LoginPage.php?alerte=notConnected");
+	        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
 	        return;
 	    }
 
