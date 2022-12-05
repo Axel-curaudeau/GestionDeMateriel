@@ -30,8 +30,14 @@ include("../inc/constantes.inc.php");?>
     </div>
 
     <div class="listeMateriel">
-        <div class="Materiel">
-        </div>
+        <div class="Materiel" style="background-color:red; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:green; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:blue; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:yellow; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:purple; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:orange; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:grey; width:500px; height:200px;"></div>
+        <div class="Materiel" style="background-color:lightblue; width:500px; height:200px;"></div>
     </div>
 
     <div style="height:10000px;">

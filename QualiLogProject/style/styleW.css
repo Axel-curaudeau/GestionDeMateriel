@@ -180,3 +180,13 @@ summary {
     color: var(--WLcolor1);
     font-size: 21px;
 }
+
+.listeMateriel {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.Materiel {
+    margin: 20px 10px;
+}
