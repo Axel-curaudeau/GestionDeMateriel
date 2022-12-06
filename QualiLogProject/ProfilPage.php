@@ -39,9 +39,12 @@ include("../inc/constantes.inc.php");?>
                 <label for="NouveauMotDePasse">Nouveau Mot de Passe : </label>   
                 <input type="password" placeholder="Mot de Passe" name="NouveauMotDePasse" required> 
                 <button type="submit" class="bouton">Mettre à jour</button>
-                <p style="margin: 0;"><a href="home.php">Retour</a></p>
+                <p style="margin: 0;"><a class=return>Retour</a></p>
             </div>
         </div>
     </form>  
 </body>     
 </html>
+
+<script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="Scripts/returnScript.js"></script>

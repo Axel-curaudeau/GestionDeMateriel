@@ -31,8 +31,12 @@ include("../inc/constantes.inc.php")?>
             <label for="MotDePasse">Mot de Passe :</label>   
             <input type="password" placeholder="Mot de Passe" name="MotDePasse" required> 
             <button type="submit" class="bouton">Créer un compte</button>
-            <p style="margin: 0;"><a href="LoginPage.php">Se Connecter</a></p>
+            <p style="margin: 0;"><a class=return>Retour</a></p>
         </div>
     </form>  
 </body>     
 </html>
+
+
+<script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="Scripts/returnScript.js"></script>

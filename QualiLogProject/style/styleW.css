@@ -1,5 +1,6 @@
 :root {
     --homeBackgroundColor: #f2fefa;
+    --WLcolor0: #c4ffeb;
     --WLcolor1: #69BBAA;
     --WLcolor2: #4A8A8B;
     --backgroundColor: #ffffff;
@@ -179,4 +180,62 @@ summary {
 .bandeau a:hover {
     color: var(--WLcolor1);
     font-size: 21px;
+}
+
+.Tableau {
+    width: 85%;
+    border-collapse: collapse;
+    border: 3px solid;
+    margin: 10px auto;
+}
+
+.TableauTitreItem {
+    border: 3px solid black;
+    text-align: center;
+    font-weight: bold;
+    background-color: #a4d1c8;
+}
+
+.Tableau td {
+    border: 1px solid;
+    text-align: center;
+}
+
+.Tableau tr:hover {
+    background-color: gray;
+}
+
+#TableauBoutons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: auto;
+}
+
+.ButtonIcon {
+    width: 25px;
+    height: 25px;
+}
+
+.ButtonIcon:hover {
+    filter: invert(100%);
+}
+
+.Titre {
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+
+#BoutonCreerCompte {
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.AdminCheckbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+    margin-bottom: 0px;
 }
