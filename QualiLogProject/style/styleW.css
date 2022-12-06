@@ -217,12 +217,25 @@ summary {
     height: 25px;
 }
 
-.ButtonSpan:hover {
+.ButtonIcon:hover {
     filter: invert(100%);
 }
 
 .Titre {
     text-align: center;
     margin-bottom: 1%;
-    margin-top: 1%;
+    margin-top: 2%;
+}
+
+#BoutonCreerCompte {
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+.AdminCheckbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+    margin-bottom: 0px;
 }

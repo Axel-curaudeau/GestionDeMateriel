@@ -30,10 +30,11 @@ include("../inc/bddconnect.inc.php")?>
         </div>
     </div>
 
-    <h1 class=Titre>Gestion de Comptes</h1>
-    <h2 class=Titre>Liste des comptes</h2>
 
-    
+    <h1 class=Titre>Gestion des Comptes</h1>
+
+    <div id=BoutonCreerCompte><a href="RegisterPage.php">Créer un nouveau Compte</a></div>
+
     <table class=Tableau>
         <tr class=TableauTitreColonnes>
             <th class=TableauTitreItem>Prénom</th>
@@ -41,42 +42,39 @@ include("../inc/bddconnect.inc.php")?>
             <th class=TableauTitreItem>Mail</th>
             <th class=TableauTitreItem>Admin</th>
             <th class=TableauTitreItem></th>            
-
         </tr>
+
         <?php
-            $sql = 'SELECT * FROM wl_users;';
-            $resStat = $mysqlClient->prepare($sql);
-            $resStat->execute();
-            $res = $resStat->fetchAll();
-            foreach($res as $row) {
-                echo "<tr>";
-                echo "<td class=TableauItem>".$row['FirstName']."</td>";
-                echo "<td class=TableauItem>".$row['LastName']."</td>";
-                echo "<td class=TableauItem>".$row['Mail']."</td>";
-                if ($row['IsAdmin'] == 1) {
-                    echo "<td class=TableauItem>Oui</td>";
-                } else {
-                    echo "<td class=TableauItem>Non</td>";
-                }?>
+        $sql = 'SELECT * FROM wl_users;';
+        $resStat = $mysqlClient->prepare($sql);
+        $resStat->execute();
+        $res = $resStat->fetchAll();
+        
+        foreach($res as $row) {?>
+            <tr id=<?php echo($row['UserId']);?>>
+                <td class=TableauItem><?php echo($row['FirstName']);?></td>
+                <td class=TableauItem><?php echo($row['LastName']);?></td>
+                <td class=TableauItem><?php echo($row['Mail']);?></td>
+                <td class=TableauItem>
+                    <input type="checkbox" class=AdminCheckbox <?php if($row['IsAdmin'] == 1) {echo("checked");}?>></input>
+                </td>
                 <td>
                     <div id=TableauBoutons>
-                        <a>
-                            <span class=ButtonSpan>
-                                <image src="./img/edit-button.png" class=ButtonIcon alt=Modifier></image>
-                            </span>
-                        </a>
-                        <a>
-                            <span class=ButtonSpan>
-                                <image src="./img/delete.png" class=ButtonIcon alt=Supprimer></image>
-                            </span>
-                        </a>
-                    <div>
+                        <image src="./img/edit-button.png" class=ButtonIcon alt=Modifier onclick="ChangeUser(<?php echo($row['UserId']); ?>)"></image>
+                        <image src="./img/delete.png" class=ButtonIcon alt=Supprimer onclick="DeleteUser(<?php echo($row['UserId']); ?>)"></image>
+                    </div>
                 </td>
-                </tr>
-            <?php }
-        ?>
+            </tr>
+        <?php 
+        }?>
     </table>
-    <a href="RegisterPage.php">Créer un Compte</a>
+    
+
+    <h1 class=Titre>Gestion du Matériel</h1>
+
+
 
 </body>
 </html>
+<script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="Scripts/AdminPageScripts.js"></script>

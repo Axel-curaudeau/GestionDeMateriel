@@ -17,5 +17,5 @@
 - Changer le bouton Se connecter sur la page de register par un bouton retour
 
 # Ne fonctionne pas
-- Mot de passe oublié (Mail jamais reçu)
+
 
