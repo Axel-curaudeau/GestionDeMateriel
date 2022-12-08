@@ -33,7 +33,7 @@ include("../inc/bddconnect.inc.php")?>
 
     <h1 class=Titre>Gestion des Comptes</h1>
 
-    <div id=BoutonCreerCompte><a href="RegisterPage.php">Créer un nouveau Compte</a></div>
+    <div id=BoutonCreerCompte><button href="RegisterPage.php">Créer un nouveau Compte</button></div>
 
     <table class=Tableau>
         <tr class=TableauTitreColonnes>
@@ -50,7 +50,8 @@ include("../inc/bddconnect.inc.php")?>
         $resStat->execute();
         $res = $resStat->fetchAll();
         
-        foreach($res as $row) {?>
+        foreach($res as $row) {
+            ?>
             <tr id=<?php echo($row['UserId']);?>>
                 <td class=TableauItem><?php echo($row['FirstName']);?></td>
                 <td class=TableauItem><?php echo($row['LastName']);?></td>
@@ -69,8 +70,9 @@ include("../inc/bddconnect.inc.php")?>
         }?>
     </table>
     
-
     <h1 class=Titre>Gestion du Matériel</h1>
+
+    <div id=NewDeviceButton><a href="NewDevicePage.php">Créer un nouveau Matériel</a></div>
 
 
 
