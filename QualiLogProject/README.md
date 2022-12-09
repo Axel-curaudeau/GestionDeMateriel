@@ -10,6 +10,8 @@
   - connexion avec un mail et mot de passe quelconque
 - inscription utilisateur
 - inscription avec mail déjà utilisé
+- utilisateur ne peut pas accéder aux pages/boutons admin
+- utilisateur non connecter ne peut accéder à rien
 
 
 # A faire
