@@ -22,7 +22,7 @@ include("../inc/constantes.inc.php");?>
             <a href="ProfilPage.php">Mon Profil</a>
         </div>
         <div class="bandeauElement">
-            <a href="#">Admin</a>
+            <a href="AdminPage.php">Admin</a>
         </div>
         <div class="bandeauElement">
             <a href="Deconnexion.php">Se Déconnecter</a>

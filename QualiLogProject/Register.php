@@ -37,7 +37,11 @@ include("../inc/constantes.inc.php"); ?>
     echo(strlen($MotDePasse));
 
     if($exec) {
-        header("Location: ".DOMAIN_URL."/qualilogproject/LoginPage.php?alerte=registered");
+        if (isset($_SESSION['MAIL'])) {
+            header("Location: ".DOMAIN_URL."/qualilogproject/AdminPage.php");
+        } else {
+            header("Location: ".DOMAIN_URL."/qualilogproject/LoginPage.php");
+        }
         
     } else {
         echo('Erreur Requete SQL');
