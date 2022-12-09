@@ -298,6 +298,25 @@ summary {
     border: 1.5px solid var(--WLcolor2)
 }
 
+.titreCatalogue {
+    font-size: 1.7em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .titleRule {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color:var(--WLcolor2);
+    border-radius: 2px;
+    border: none;
+    height: 2px;
+  }
+
 .Tableau {
     width: 85%;
     border-collapse: collapse;
