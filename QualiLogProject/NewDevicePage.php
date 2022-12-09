@@ -17,7 +17,7 @@ include("../inc/constantes.inc.php")?>
 
     <form action="NewDevice.php" method="POST">
         <div class="container" align="left">  
-            <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Créer un Nouveau Matériel</h1>
+            <h1 style="white-space: nowrap; margin: 0 10px 10px 10px;text-align: center;">Créer un Nouveau Matériel</h1>
             <label for="nom">Nom du Matériel</label>
             <input type="text" placeholder="Iphone 11" name="nom" required>
             <label for="version">Version</label>
