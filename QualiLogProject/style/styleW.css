@@ -375,3 +375,22 @@ th {
     margin-top: 4px;
     margin-bottom: 0px;
 }
+
+.MaterielAdd input[type="text"] {
+    border:0;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.MaterielAdd input[type="submit"] {
+    border: 2px solid var(--WLcolor1);
+    background-color: var(--WLcolor0);
+    font-size: 15px;
+    text-align: center;
+    padding: 0;
+    border-radius: 5px;
+    width: 140px;
+    height: 32px;
+    margin: 0 auto 10px auto;
+}
