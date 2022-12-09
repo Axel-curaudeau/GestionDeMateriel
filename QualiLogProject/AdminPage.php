@@ -36,12 +36,12 @@ include("../inc/bddconnect.inc.php")?>
     <div id=BoutonCreerCompte><button href="RegisterPage.php">Créer un nouveau Compte</button></div>
 
     <table class=Tableau>
-        <tr class=TableauTitreColonnes>
-            <th class=TableauTitreItem>Prénom</th>
-            <th class=TableauTitreItem>Nom</th>
-            <th class=TableauTitreItem>Mail</th>
-            <th class=TableauTitreItem>Admin</th>
-            <th class=TableauTitreItem></th>            
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Mail</th>
+            <th>Admin</th>
+            <th></th>            
         </tr>
 
         <?php
@@ -49,21 +49,20 @@ include("../inc/bddconnect.inc.php")?>
         $resStat = $mysqlClient->prepare($sql);
         $resStat->execute();
         $res = $resStat->fetchAll();
+
         
         foreach($res as $row) {
             ?>
-            <tr id=<?php echo($row['UserId']);?>>
-                <td class=TableauItem><?php echo($row['FirstName']);?></td>
-                <td class=TableauItem><?php echo($row['LastName']);?></td>
-                <td class=TableauItem><?php echo($row['Mail']);?></td>
-                <td class=TableauItem>
-                    <input type="checkbox" class=AdminCheckbox <?php if($row['IsAdmin'] == 1) {echo("checked");}?>></input>
+            <tr id="<?php echo($row['UserID']);?>">
+                <td><?php echo($row['FirstName']);?></td>
+                <td><?php echo($row['LastName']);?></td>
+                <td><?php echo($row['Mail']);?></td>
+                <td>
+                    <input type="checkbox" <?php if($row['IsAdmin'] == 1) {echo("checked");}?>></input>
                 </td>
                 <td>
-                    <div id=TableauBoutons>
-                        <image src="./img/edit-button.png" class=ButtonIcon alt=Modifier onclick="ChangeUser(<?php echo($row['UserId']); ?>)"></image>
-                        <image src="./img/delete.png" class=ButtonIcon alt=Supprimer onclick="DeleteUser(<?php echo($row['UserId']); ?>)"></image>
-                    </div>
+                    <image src="./img/edit-button.png" alt=Modifier onclick="ChangeUser(<?php echo($row['UserID']); ?>)"></image>
+                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteUser(<?php echo($row['UserID']); ?>)"></image>
                 </td>
             </tr>
         <?php 
@@ -73,7 +72,6 @@ include("../inc/bddconnect.inc.php")?>
     <h1 class=Titre>Gestion du Matériel</h1>
 
     <div id=NewDeviceButton><a href="NewDevicePage.php">Créer un nouveau Matériel</a></div>
-
 
 
 </body>

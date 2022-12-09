@@ -307,7 +307,7 @@ summary {
     padding: 0;
   }
 
-  .titleRule {
+.titleRule {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10%;
@@ -319,42 +319,42 @@ summary {
   }
 
 .Tableau {
-    width: 85%;
+    width: auto;
     border-collapse: collapse;
-    border: 3px solid;
+    border: 2px solid;
     margin: 10px auto;
 }
 
-.TableauTitreItem {
-    border: 3px solid black;
+th {
+    border: 2px solid black;
     text-align: center;
     font-weight: bold;
     background-color: #a4d1c8;
+    padding: 0 10px;
 }
 
 .Tableau td {
     border: 1px solid;
     text-align: center;
+    padding: 0 30px;
+}
+
+.Tableau td:last-child {
+    border: 1px solid;
+    text-align: center;
+    padding: 3px 3px 0px 5px;
 }
 
 .Tableau tr:hover {
     background-color: var(--grey);
 }
 
-#TableauBoutons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: auto;
+.Tableau img {
+    width: 20px;
 }
 
-.ButtonIcon {
-    width: 25px;
-    height: 25px;
-}
-
-.ButtonIcon:hover {
-    filter: invert(100%);
+.Tableau img:hover {
+    filter: invert(100%)
 }
 
 .Titre {
@@ -369,7 +369,7 @@ summary {
     margin-bottom: 20px;
 }
 
-.AdminCheckbox {
+.Tableau input {
     width: 18px;
     height: 18px;
     margin-top: 4px;

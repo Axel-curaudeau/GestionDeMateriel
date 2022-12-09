@@ -10,7 +10,7 @@ function ChangeUser($userId){
     location.href = "ChangeUserPage.php?userId=" + $userId;
 }
 
-$(".AdminCheckbox").change(function() {
+$(".Tableau input").change(function() {
     var r = confirm("Voulez-vous vraiment modifier les droits de cet utilisateur ?");
     if (r == true) {
         var userId = $(this).parent().parent().attr("id");
