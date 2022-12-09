@@ -1,12 +1,12 @@
 <?php
 // Constantes
 define('TARGET', 'files');      // Repertoire cible
-define('MAX_SIZE', 100000);     // Taille max en octets du fichier
-define('WIDTH_MAX', 800);       // Largeur max de l'image en pixels
-define('HEIGHT_MAX', 800);      // Hauteur max de l'image en pixels
+define('MAX_SIZE', 200000);     // Taille max en octets du fichier
+define('REQUIRED_WIDTH', 500);       // Largeur max de l'image en pixels
+define('REQUIRED_HEIGHT', 500);      // Hauteur max de l'image en pixels
 
 // Tableaux de donnees
-$tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
+$tabExt = array('jpg');    // Extensions autorisees
 $infosImg = array();
 
 // Variables
@@ -39,7 +39,7 @@ if(!empty($_POST)) {
             // On verifie le type de l'image
             if($infosImg[2] >= 1 && $infosImg[2] <= 14) {
                 // On verifie les dimensions et taille de l'image
-                if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['fichier']['tmp_name']) <= MAX_SIZE)) {
+                if(($infosImg[0] == REQUIRED_WIDTH) && ($infosImg[1] == REQUIRED_HEIGHT) && (filesize($_FILES['fichier']['tmp_name']) <= MAX_SIZE)) {
                     // Parcours du tableau d'erreurs
                     if(isset($_FILES['fichier']['error']) && UPLOAD_ERR_OK === $_FILES['fichier']['error']) {
                         // On renomme le fichier
