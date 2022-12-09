@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 09 déc. 2022 à 13:07
+-- Généré le : ven. 09 déc. 2022 à 15:30
 -- Version du serveur : 5.7.34
 -- Version de PHP : 7.4.21
 
@@ -34,6 +34,18 @@ CREATE TABLE `WL_Equipment` (
   `PhoneNumber` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `WL_Equipment`
+--
+
+INSERT INTO `WL_Equipment` (`Reference`, `Name`, `Version`, `PhoneNumber`) VALUES
+('AN001', 'Galaxy S20', '13.2', NULL),
+('AN002', 'Oppo Find X3 Lite', '12.6', NULL),
+('AN003', 'Galaxy A13', '13.1', NULL),
+('AN004', 'Google Pixel 7 Pro', '13.2', NULL),
+('AP001', 'iPhone 14', '16.1', NULL),
+('AP002', 'iPhone 14 Pro', '16.0', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +59,13 @@ CREATE TABLE `WL_Reservation` (
   `UserID` int(11) NOT NULL,
   `Reference` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `WL_Reservation`
+--
+
+INSERT INTO `WL_Reservation` (`ReservationID`, `BeginDate`, `EndDate`, `UserID`, `Reference`) VALUES
+(1, '2022-12-08', '2022-12-17', 2, 'AP001');
 
 -- --------------------------------------------------------
 
@@ -71,7 +90,8 @@ CREATE TABLE `WL_Users` (
 --
 
 INSERT INTO `WL_Users` (`UserID`, `FirstName`, `LastName`, `Mail`, `RegistrationNumber`, `Pswd`, `IsAdmin`, `ResetPswd`, `LastResetPswd`) VALUES
-(1, 'Thomas', 'Raymond', 'thomas.raymond240@icloud.com', NULL, '$2y$10$Jm1N45fvxaVQ0B7m6lPqSO5ohqzEHT3ASyCj4tomqqx5J7WC7.0KW', NULL, NULL, NULL);
+(1, 'Thomas', 'Raymond', 'thomas.raymond240@icloud.com', NULL, '$2y$10$Jm1N45fvxaVQ0B7m6lPqSO5ohqzEHT3ASyCj4tomqqx5J7WC7.0KW', NULL, NULL, NULL),
+(2, 'Timothée', 'Auffret', 'timothee.auffret@etu.univ-tours.fr', NULL, '$2y$10$L5Mc6W2L4QSJzvK.GcAwDeCGkKtMTS8HnzBlrCHLRc9oCFLGFnM7u', NULL, NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -105,13 +125,13 @@ ALTER TABLE `WL_Users`
 -- AUTO_INCREMENT pour la table `WL_Reservation`
 --
 ALTER TABLE `WL_Reservation`
-  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ReservationID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `WL_Users`
 --
 ALTER TABLE `WL_Users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées

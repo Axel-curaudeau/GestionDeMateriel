@@ -29,10 +29,11 @@
     </div>
 
     <br/><br/>
-
+    <p class="titreCatalogue">Catalogue de matériel</p>
+    <hr class="titleRule">
     <div class="listeMateriel">
 
-        <p class="titreCatalogue">Catalogue de matériel</p>
+        
 
         <?php
 
