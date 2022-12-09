@@ -32,9 +32,9 @@ include("../inc/bddconnect.inc.php")?>
 
 
     <h1 class=Titre>Gestion des Comptes</h1>
-
-    <div id=BoutonCreerCompte><button href="RegisterPage.php">Créer un nouveau Compte</button></div>
-
+    <div style="text-align:center;">
+        <a href="RegisterPage.php"><img src="https://cdn-icons-png.flaticon.com/512/3683/3683218.png" style="width:30px;"></a>
+    </div>
     <table class=Tableau>
         <tr>
             <th>Prénom</th>
