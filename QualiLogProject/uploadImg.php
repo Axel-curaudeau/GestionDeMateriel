@@ -1,7 +1,7 @@
 <?php
 // Constantes
 define('TARGET', 'files');      // Repertoire cible
-define('MAX_SIZE', 500000);     // Taille max en octets du fichier
+define('MAX_SIZE', 200000);     // Taille max en octets du fichier
 define('REQUIRED_WIDTH', 500);       // Largeur max de l'image en pixels
 define('REQUIRED_HEIGHT', 500);      // Hauteur max de l'image en pixels
 
