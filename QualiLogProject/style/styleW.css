@@ -93,7 +93,8 @@ summary {
     background-color: var(--lightGray);
     margin: 5px 5px;
     border-radius: 8px;
-    width: 350px;
+    width: auto;
+    min-width: 350px;
     box-shadow: 0 8px 12px 5px rgba(0, 0, 0, 0.2);
 }
 
