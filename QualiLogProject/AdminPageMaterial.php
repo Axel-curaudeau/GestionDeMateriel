@@ -19,48 +19,45 @@ include("../inc/bddconnect.inc.php")?>
     include 'menubar.php'
     ?>
 
-    <h1 id="comptes" class=Titre>Gestion des Comptes</h1>
-    <div style="text-align:center;">
-        <a href="RegisterPage.php"><img src="img/signUp.png" style="width:30px;"></a>
-    </div>
-    <table class=Tableau>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Mail</th>
-            <th>Admin</th>
-            <th></th>            
-        </tr>
-
-        <?php
-        $sql = 'SELECT * FROM wl_users;';
-        $resStat = $mysqlClient->prepare($sql);
-        $resStat->execute();
-        $res = $resStat->fetchAll();
-
-        
-        foreach($res as $row) {
-            ?>
-            <tr id="<?php echo($row['UserID']);?>">
-                <td><?php echo($row['FirstName']);?></td>
-                <td><?php echo($row['LastName']);?></td>
-                <td><?php echo($row['Mail']);?></td>
-                <td>
-                    <input type="checkbox" <?php if($row['IsAdmin'] == 1) {echo("checked");}?>></input>
-                </td>
-                <td>
-                    <image src="./img/edit-button.png" alt=Modifier onclick="ChangeUser(<?php echo($row['UserID']); ?>)"></image>
-                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteUser(<?php echo($row['UserID']); ?>)"></image>
-                </td>
-            </tr>
-        <?php 
-        }?>
-    </table>
+    <p class="titrePage">Gestion du catalogue de matériel</p>
+    <hr class="titleRule">
+    <div class="listeMateriel">
     
-    <h1 id="materiel" class=Titre>Gestion du Matériel</h1>
+    <div class="AddUserButton" style="text-align:center; overflow: auto;">
+        <a class="NoUnderline" href="RegisterPage.php">
+            <span style="vertical-align:middle;">Ajouter un nouvel appareil</span>
+            <img class="LinkIcon" src="img/add.png" style="width:20px; vertical-align:middle;">
+        </a>
+    </div>
 
-    <div id=NewDeviceButton><a href="NewDevicePage.php">Créer un nouveau Matériel</a></div>
+    <?php
+    $q_liste_materiel = "SELECT * FROM WL_Equipment";
+    $query_liste_materiel = $mysqlClient->prepare($q_liste_materiel);
+    $query_liste_materiel->execute();
 
+    while($row = $query_liste_materiel->fetch()){ ?>
+            <div id="<?php echo($row['Reference']); ?> " class="Materiel">
+              <img src=<?php echo '"files/'.$row['Reference'].'.jpg" alt="'.$row['Name'].'"'; ?> >
+              <div class="DescriptionMateriel">
+                  <div class="nomMateriel">
+                        <p><?php echo ($row['Name']); ?></p>
+                        <image src="./img/delete.png" alt=Supprimer onclick="DeleteMaterial('<?php echo($row['Reference']); ?>')" style="width:20px;height:20px;"></image>
+                  </div>
+                  <hr>
+                  <div class="versionEtRef">
+                      <div class="version">
+                          <p>Version :</p>
+                          <p><?php echo ($row['Version']); ?></p>
+                      </div>
+                      <div class="reference">
+                          <p>Référence :</p>
+                          <p><?php echo ($row['Reference']); ?></p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        <?php } ?>
+</div>
 
 </body>
 </html>

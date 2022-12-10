@@ -18,10 +18,6 @@ include("../inc/bddconnect.inc.php")?>
     }
     include 'menubar.php'
     ?>
-
-    
-
-    <br/><br/>
     <p class="titrePage">Gestion des comptes</p>
     <hr class="titleRule">
 

@@ -1,13 +1,22 @@
 function DeleteUser(userId) {
     var r = confirm("Voulez-vous vraiment supprimer cet utilisateur ?");
     if (r == true) {
-        fetch("DeleteUser.php?userId=" + userId)
+        fetch("DeleteUser.php?userId=" + userId);
         $("#"+userId).remove();
     }
 }
 
 function ChangeUser($userId){
     location.href = "ChangeUserPage.php?userId=" + $userId;
+}
+
+function DeleteMaterial(materialId){
+    console.log(materialId);
+    var r = confirm("Voulez-vous vraiment supprimer ce matériel ?");
+    if (r == true) {
+        fetch("DeleteMaterial.php?ref=" + materialId);
+        $("#"+materialId).remove();
+    }
 }
 
 $(".Tableau input").change(function() {

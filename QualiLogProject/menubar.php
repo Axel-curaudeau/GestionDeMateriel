@@ -15,12 +15,11 @@ $privilege = $query_privilege->fetch();
         <a href="Home.php">Accueil</a>
     </div>
     <?php
-    if ($privilege['isAdmin'] == 1) {
-        echo '<div class="bandeauElement">';
-        echo '    <a href="AdminPage.php">Panneau de contrôle</a>';
-        echo '</div>';
-    };
-    ?>
+    if ($privilege['isAdmin'] == 1) : ?>
+        <div class="bandeauElement">
+            <a href="AdminPage.php">Panneau de contrôle</a>
+        </div>
+    <?php endif; ?>
     <div class="bandeauElement">
         <a href="Deconnexion.php">Se Déconnecter</a>
     </div>
