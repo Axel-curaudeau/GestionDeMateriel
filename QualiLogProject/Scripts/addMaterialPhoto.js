@@ -11,3 +11,11 @@ function performClick(elemId) {
         }
     });
 }
+
+$('.MaterielAdd input[type="submit"]').on('click', function () {
+    var file = $('.MaterielAdd input[type="file"]').val();
+    if (file == "") {
+        alert("Choisissez une photo en cliquant sur l'image");
+        return false;
+    }
+});
