@@ -21,7 +21,7 @@
     <div class="listeMateriel">
 
         <!-- objet à remplir pour ajouter à la BDD -->
-        <form action="AddObject.php" method="post" enctype="multipart/form-data">
+        <form action="#" method="post" enctype="multipart/form-data">
         <div class="Materiel MaterielAdd">
             <a href="#" onclick="performClick('#inputNewPhoto')">
                 <img src="https://static.vecteezy.com/ti/vecteur-libre/p3/6253524-icone-de-point-d-interrogation-gratuit-vectoriel.jpg" alt="Ajouter un objet">
@@ -41,7 +41,7 @@
                         <input type="text" name="reference" placeholder="Référence" required>
                     </div>
                 </div>
-                <input type="file" name="fileToUpload" id="inputNewPhoto" style="display:none;" required>
+                <input type="file" name="fileToUpload" id="inputNewPhoto" style="display:none;">
                 <input type="submit" value="Ajouter" name="submit">
             </div>
         </div>
