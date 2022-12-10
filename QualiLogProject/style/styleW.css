@@ -299,7 +299,7 @@ summary {
     border: 1.5px solid var(--WLcolor2)
 }
 
-.titreCatalogue {
+.titrePage {
     font-size: 1.7em;
     font-weight: bold;
     text-align: center;
@@ -374,4 +374,24 @@ th {
     height: 18px;
     margin-top: 4px;
     margin-bottom: 0px;
+}
+
+.TitleList {
+    list-style: none;
+    margin-left : 8%;
+    margin-top : 2%;
+}
+
+.TitleListItem {
+    margin-bottom: 15px;
+}
+
+.TitleLink{
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.TitleLink:hover{
+    color: var(--WLcolor1);
+    text-decoration: none;
 }

@@ -13,7 +13,7 @@ include("../inc/bddconnect.inc.php")?>
 <body style="background-color: var(--homeBackgroundColor);" id='body'>
     <?php
     if(!isset($_SESSION['MAIL'])) {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
+        header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
     ?>
@@ -30,51 +30,16 @@ include("../inc/bddconnect.inc.php")?>
         </div>
     </div>
 
+    <br/><br/>
+    <p class="titrePage">Panneau de contrôle administrateur</p>
+    <hr class="titleRule">
 
-    <h1 class=Titre>Gestion des Comptes</h1>
-    <div style="text-align:center;">
-        <a href="RegisterPage.php"><img src="https://cdn-icons-png.flaticon.com/512/3683/3683218.png" style="width:30px;"></a>
-    </div>
-    <table class=Tableau>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Mail</th>
-            <th>Admin</th>
-            <th></th>            
-        </tr>
-
-        <?php
-        $sql = 'SELECT * FROM wl_users;';
-        $resStat = $mysqlClient->prepare($sql);
-        $resStat->execute();
-        $res = $resStat->fetchAll();
-
-        
-        foreach($res as $row) {
-            ?>
-            <tr id="<?php echo($row['UserID']);?>">
-                <td><?php echo($row['FirstName']);?></td>
-                <td><?php echo($row['LastName']);?></td>
-                <td><?php echo($row['Mail']);?></td>
-                <td>
-                    <input type="checkbox" <?php if($row['IsAdmin'] == 1) {echo("checked");}?>></input>
-                </td>
-                <td>
-                    <image src="./img/edit-button.png" alt=Modifier onclick="ChangeUser(<?php echo($row['UserID']); ?>)"></image>
-                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteUser(<?php echo($row['UserID']); ?>)"></image>
-                </td>
-            </tr>
-        <?php 
-        }?>
-    </table>
-    
-    <h1 class=Titre>Gestion du Matériel</h1>
-
-    <div id=NewDeviceButton><a href="NewDevicePage.php">Créer un nouveau Matériel</a></div>
+    <ul class="TitleList">
+        <li class="TitleListItem" ><a class="TitleLink" href="AdminPageAccounts.php">Gestion des Comptes</a></li>
+        <li class="TitleListItem" ><a class="TitleLink" href="AdminPageMaterial.php">Gestion du Matériel</a></li>
+        <li class="TitleListItem" ><a class="TitleLink" href="AdminPageReservations.php">Visualisation des réservations</a></li>
+    </ul>
 
 
 </body>
 </html>
-<script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="Scripts/AdminPageScripts.js"></script>
