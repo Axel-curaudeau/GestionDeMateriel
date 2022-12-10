@@ -16,6 +16,7 @@ include("../inc/bddconnect.inc.php")?>
         header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
         return;
     }
+    include 'menubar.php'
     ?>
 
 <?php if(isset($_GET['alerte'])){ ?>

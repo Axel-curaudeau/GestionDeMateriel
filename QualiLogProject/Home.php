@@ -14,21 +14,8 @@
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
+    include 'menubar.php'
     ?>
-
-    <div class="bandeau">
-        <div class="bandeauElement">
-            <a href="ProfilPage.php">Mon Profil</a>
-        </div>
-        <div class="bandeauElement">
-            <a href="AdminPage.php">Admin</a>
-        </div>
-        <div class="bandeauElement">
-            <a href="Deconnexion.php">Se Déconnecter</a>
-        </div>
-    </div>
-
-    <br/><br/>
     <p class="titrePage">Catalogue de matériel</p>
     <hr class="titleRule">
     <div class="listeMateriel">

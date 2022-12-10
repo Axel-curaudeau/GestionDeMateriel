@@ -8,11 +8,12 @@ include("../inc/constantes.inc.php")?>
     <title>Gestion de matériel | Nouveau Matériel</title>  
     <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
-</head>    
+</head>  
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php if(!isset($_SESSION['MAIL'])) {
         header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
         return;
+        include 'menubar.php';
     }?>
 
     <form action="NewDevice.php" method="POST">

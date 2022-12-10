@@ -16,21 +16,9 @@ include("../inc/bddconnect.inc.php")?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
+    include 'menubar.php'
     ?>
-
-    <div class="bandeau">
-        <div class="bandeauElement">
-            <a href="ProfilPage.php">Mon Profil</a>
-        </div>
-        <div class="bandeauElement">
-            <a href="Home.php">Home</a>
-        </div>
-        <div class="bandeauElement">
-            <a href="Deconnexion.php">Se Déconnecter</a>
-        </div>
-    </div>
-
-    <br/><br/>
+    
     <p class="titrePage">Panneau de contrôle administrateur</p>
     <hr class="titleRule">
 
