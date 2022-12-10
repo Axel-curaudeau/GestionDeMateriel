@@ -16,6 +16,7 @@ function DeleteMaterial(materialId){
     if (r == true) {
         fetch("DeleteMaterial.php?ref=" + materialId);
         $("#"+materialId).remove();
+        document.location.reload(true);
     }
 }
 
