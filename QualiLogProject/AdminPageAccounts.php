@@ -31,9 +31,15 @@ include("../inc/bddconnect.inc.php")?>
     </div>
 
 
-    <h1 id="comptes" class=Titre>Gestion des Comptes</h1>
-    <div style="text-align:center;">
-        <a href="RegisterPage.php"><img src="img/signUp.png" style="width:30px;"></a>
+    <br/><br/>
+    <p class="titrePage">Gestion des comptes</p>
+    <hr class="titleRule">
+    
+    <div class="AddUserButton" style="text-align:center; overflow: auto;">
+        <a class="NoUnderline" href="RegisterPage.php">
+            <span style="vertical-align:middle;">Ajouter un nouvel utilisateur</span>
+            <img class="LinkIcon" src="img/signUp.png" style="width:20px; vertical-align:middle;">
+        </a>
     </div>
     <table class=Tableau>
         <tr>
@@ -68,10 +74,6 @@ include("../inc/bddconnect.inc.php")?>
         <?php 
         }?>
     </table>
-    
-    <h1 id="materiel" class=Titre>Gestion du Matériel</h1>
-
-    <div id=NewDeviceButton><a href="NewDevicePage.php">Créer un nouveau Matériel</a></div>
 
 
 </body>

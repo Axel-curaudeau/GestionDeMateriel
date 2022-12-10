@@ -300,7 +300,7 @@ summary {
 }
 
 .titrePage {
-    font-size: 1.7em;
+    font-size: 1.8em;
     font-weight: bold;
     text-align: center;
     margin: 0;
@@ -315,7 +315,7 @@ summary {
     background-color:var(--WLcolor2);
     border-radius: 2px;
     border: none;
-    height: 2px;
+    height: 3px;
   }
 
 .Tableau {
@@ -393,5 +393,27 @@ th {
 
 .TitleLink:hover{
     color: var(--WLcolor1);
+    text-decoration: none;
+}
+
+.AddUserButton {
+    margin-left: 44%;
+    margin-right: 44%;
+    border-style: solid;
+    border-color : white;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.AddUserButton:hover {
+    border-style: solid;
+    border-color : var(--grey);
+    border-radius: 5px;
+    background-color: var(--grey);
+
+}
+
+.NoUnderline:hover {
     text-decoration: none;
 }
