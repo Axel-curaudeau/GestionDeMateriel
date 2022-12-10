@@ -454,6 +454,7 @@ details[close] summary ~ * {
     padding: 0;
     margin: 0;
     text-align: center;
+    font-weight: 500;
 }
 
 .MaterielAdd input[type="submit"] {
