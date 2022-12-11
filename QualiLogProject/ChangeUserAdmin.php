@@ -19,4 +19,9 @@ $sql = 'UPDATE wl_users SET IsAdmin = :admin WHERE UserId = :userId;';
 $resStat = $mysqlClient->prepare($sql);
 $resStat->execute(array(':userId' => $userId, ':admin' => $admin));
 
+if($userId == $_SESSION['USERID']) {
+    $_SESSION['IsAdmin'] = $admin;
+    header("Location: Home.php?alerte=changeAdmin");
+}
+
 ?>
