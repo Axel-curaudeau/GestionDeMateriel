@@ -7,6 +7,11 @@ if(!isset($_SESSION['MAIL'])) {
     return;
 }
 
+if (!$_SESSION['IsAdmin']) {
+    header("Location: ".DOMAIN_URL."/QualiLogProject/Home.php?alerte=notAdmin");
+    return;
+}
+
 $userId = $_GET['userId'];
 $admin = $_GET['admin'];
 

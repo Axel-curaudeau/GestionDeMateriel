@@ -9,13 +9,7 @@ if(!isset($_SESSION['MAIL'])) {
     return;
 }
 
-$q_privilege = "SELECT isAdmin FROM wl_users WHERE Mail = '".$_SESSION['MAIL']."'";
-$query_privilege = $mysqlClient->prepare($q_privilege);
-$query_privilege->execute();
-$privilege = $query_privilege->fetch();
-
-// If the user is not an admin, redirect him to the home page
-if ($privilege['isAdmin'] == 0) {
+if (!$_SESSION['IsAdmin']) {
     header("Location: Home.php?alerte=notAdmin");
     return;
 }
