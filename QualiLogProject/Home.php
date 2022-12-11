@@ -63,7 +63,7 @@
 
         function isAvailable($reference, $mysqlClient) {
             $today = date("Y-m-d");
-            $q_is_available = "SELECT * FROM WL_Equipment NATURAL JOIN WL_Reservation WHERE WL_Equipment.Reference = :ref AND :today BETWEEN WL_Reservation.BeginDate AND WL_Reservation.EndDate";
+            $q_is_available = "SELECT * FROM wl_equipment NATURAL JOIN wl_reservation WHERE wl_equipment.Reference = :ref AND :today BETWEEN wl_reservation.BeginDate AND wl_reservation.EndDate";
             
             $query_is_available = $mysqlClient->prepare($q_is_available);
             
@@ -75,7 +75,7 @@
             return $query_is_available->rowCount();
         }
 
-        $q_liste_materiel = "SELECT * FROM WL_Equipment";
+        $q_liste_materiel = "SELECT * FROM wl_equipment";
 
         $query_liste_materiel = $mysqlClient->prepare($q_liste_materiel);
 

@@ -17,12 +17,12 @@ if (!$_SESSION['IsAdmin']) {
 if (isset($_GET['ref'])) {
 
     // Delete the reservation associated with the material
-    $q_delete_reservation = "DELETE FROM WL_Reservation WHERE Reference = '".$_GET['ref']."'";
+    $q_delete_reservation = "DELETE FROM wl_reservation WHERE Reference = '".$_GET['ref']."'";
     $query_delete_reservation = $mysqlClient->prepare($q_delete_reservation);
     $query_delete_reservation->execute();
 
     // Delete the material
-    $q_delete_material = "DELETE FROM WL_Equipment WHERE Reference = '".$_GET['ref']."'";
+    $q_delete_material = "DELETE FROM wl_equipment WHERE Reference = '".$_GET['ref']."'";
     $query_delete_material = $mysqlClient->prepare($q_delete_material);
     $query_delete_material->execute();
 

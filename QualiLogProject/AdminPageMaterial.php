@@ -35,7 +35,7 @@ include("../inc/bddconnect.inc.php")?>
     </div>
 
     <?php
-    $q_liste_materiel = "SELECT * FROM WL_Equipment";
+    $q_liste_materiel = "SELECT * FROM wl_equipment";
     $query_liste_materiel = $mysqlClient->prepare($q_liste_materiel);
     $query_liste_materiel->execute();
 

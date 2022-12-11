@@ -12,8 +12,7 @@ include("../inc/constantes.inc.php");?>
 <body>
 	<?php
 
-		if(!isset($_SESSION['MAIL']))
-	    {
+		if(!isset($_SESSION['MAIL'])) {
 	        header("Location: LoginPage.php?alerte=notConnected");
 	        return;
 	    }

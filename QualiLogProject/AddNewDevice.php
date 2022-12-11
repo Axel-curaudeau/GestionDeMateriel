@@ -19,7 +19,7 @@ $DeviceRef = $_POST["reference"];
 $DevicePhoto = $_FILES["fileToUpload"]["name"];
 
 /* --- Vérification de l'unicité de la référence --- */
-$sql = 'SELECT * FROM WL_Equipment WHERE Reference = :ref';
+$sql = 'SELECT * FROM wl_equipment WHERE Reference = :ref';
 $resStat = $mysqlClient->prepare($sql);
 $resStat->execute(['ref' => $DeviceRef]);
 $res = $resStat->fetchAll();

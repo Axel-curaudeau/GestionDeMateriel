@@ -14,8 +14,8 @@ include("../inc/constantes.inc.php");?>
     if(!isset($_SESSION['MAIL'])) {
         header("Location: LoginPage.php?alerte=notConnected");
         return;
-        include 'menubar.php';
     }
+    include('menubar.php');
     include('Alerts.php');
     ?>
 
