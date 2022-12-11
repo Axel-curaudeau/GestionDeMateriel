@@ -322,7 +322,7 @@ summary {
     margin: 10px auto;
 }
 
-th:not(.daterangepicker th) {
+.Tableau th {
     border: 2px solid black;
     text-align: center;
     font-weight: bold;
