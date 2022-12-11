@@ -13,7 +13,7 @@ include("../inc/constantes.inc.php"); ?>
     <?php
     if(!isset($_POST["Mail"]))
     {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/ForgotPswd.php?alerte=noEmail");
+        header("Location: ForgotPswd.php?alerte=noEmail");
         return;
     }
 
@@ -30,13 +30,13 @@ include("../inc/constantes.inc.php"); ?>
     if(count($res) == 0)
     {
         echo($Mail);
-        header("Location: ".DOMAIN_URL."/QualiLogProject/forgotPswd.php?alerte=EmailError");
+        header("Location: ForgotPswd.php?alerte=EmailError");
         return;
     }
     
     if(strtotime(date('Y/m/d h:i:s')) - strtotime($res[0]['lastResetPswd']) < 86400) // < 24h 
     {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/forgotPswd.php?alerte=spamReset");
+        header("Location: ForgotPswd.php?alerte=spamReset");
         return;
     }
 

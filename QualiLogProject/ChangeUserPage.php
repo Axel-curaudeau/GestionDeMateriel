@@ -6,14 +6,14 @@ include("../inc/bddconnect.inc.php")?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>QualiLogProject | Modification Utilisateur</title>  
+    <title>Gestion de Matériel | Modification d'utilisateur</title>  
     <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php
     if(!isset($_SESSION['MAIL'])) {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
+        header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
     include 'menubar.php'

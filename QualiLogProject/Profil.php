@@ -5,7 +5,7 @@ include("../inc/constantes.inc.php");?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>OrgaEDT | Profil</title>  
+    <title>Gestion de Matériel | Profil utilisateur</title>  
     <link rel="stylesheet" href="style/styleBDD.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>
@@ -14,7 +14,7 @@ include("../inc/constantes.inc.php");?>
 
 		if(!isset($_SESSION['MAIL']))
 	    {
-	        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
+	        header("Location: LoginPage.php?alerte=notConnected");
 	        return;
 	    }
 
@@ -47,11 +47,11 @@ include("../inc/constantes.inc.php");?>
 							   'MotDePasse' => password_hash($NouveauMotDePasse, PASSWORD_DEFAULT),
 							   'IdPers' => $IdPers]);
 			session_destroy();
-	        header("Location: ".DOMAIN_URL."/OrgaEDT/LoginPage.php?alerte=updateSuccess");
+	        header("Location: LoginPage.php?alerte=updateSuccess");
 		}
 	    else{
 	        $_SESSION['ORGAEDT_LOGGED_MAIL_FAIL'] = $Mail;
-	        header("Location: ".DOMAIN_URL."/OrgaEDT/ProfilPage.php?alerte=wrongMdp");
+	        header("Location: ProfilPage.php?alerte=wrongMdp");
 	    }
 	?>
 </body>     

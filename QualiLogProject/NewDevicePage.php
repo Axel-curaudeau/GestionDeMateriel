@@ -2,7 +2,14 @@
 include("../inc/constantes.inc.php")
 include("../inc/bddconnect.inc.php");
 
+if(!isset($_SESSION['MAIL'])) {
+    header("Location: LoginPage.php?alerte=notConnected");
+    return;
+}
 
+if (!$_SESSION['IsAdmin']) {
+    header("Location: Home.php?alerte=notAdmin");
+    return;
 }
 ?>
 
@@ -10,17 +17,17 @@ include("../inc/bddconnect.inc.php");
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Gestion de matériel | Nouveau Matériel</title>  
+    <title>Gestion de matériel | Ajou d'un nouveau matériel</title>  
     <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>  
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php if(!isset($_SESSION['MAIL'])) {
-            header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
+            header("Location: LoginPage.php?alerte=notConnected");
             return;
         }
         if(!$_SESSION['IsAdmin']) {
-            header("Location: ".DOMAIN_URL."/QualiLogProject/Home.php?alerte=notAdmin");
+            header("Location: Home.php?alerte=notAdmin");
             return;
         }
         include 'menubar.php';

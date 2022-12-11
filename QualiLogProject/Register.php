@@ -5,7 +5,7 @@ include("../inc/constantes.inc.php"); ?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Gestion de matériel | Sign Up</title>  
+    <title>Gestion de matériel | Inscription</title>  
     <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
@@ -26,7 +26,7 @@ include("../inc/constantes.inc.php"); ?>
     $res = $resStat->fetchAll();
 
     if (count($res) != 0) {
-        header("Location: ".DOMAIN_URL."/qualilogproject/RegisterPage.php?alerte=mailFail");
+        header("Location: RegisterPage.php?alerte=mailFail");
         return;
     }
 
@@ -38,9 +38,9 @@ include("../inc/constantes.inc.php"); ?>
 
     if($exec) {
         if (isset($_SESSION['MAIL'])) {
-            header("Location: ".DOMAIN_URL."/qualilogproject/AdminPage.php");
+            header("Location: AdminPage.php");
         } else {
-            header("Location: ".DOMAIN_URL."/qualilogproject/LoginPage.php");
+            header("Location: LoginPage.php");
         }
         
     } else {
