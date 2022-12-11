@@ -4,6 +4,8 @@
     --WLcolor1: #69BBAA;
     --WLcolor2: #4A8A8B;
     --backgroundColor: #eef2f7;
+    --invalideDateRed1: #ffdada;
+    --invalideDateRed2: #faa6a6;
     --red: #b00;
     --blue: #4679bd;
     --grey: #ddd;
@@ -278,6 +280,14 @@ summary {
 .daterangepicker button {
     border-radius: 5px;
     width: auto;
+}
+
+.daterangepicker td.off.disabled {
+    background-color: var(--invalideDateRed1);
+}
+
+.daterangepicker td.off.disabled.in-range {
+    background-color: var(--invalideDateRed2);
 }
 
 .daterangepicker button:nth-child(2){
