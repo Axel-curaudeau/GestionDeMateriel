@@ -327,7 +327,7 @@ summary {
     margin: 10px auto;
 }
 
-th {
+th:not(.daterangepicker th) {
     border: 2px solid black;
     text-align: center;
     font-weight: bold;
