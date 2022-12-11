@@ -11,6 +11,10 @@
         <div class="Alerte" style="background-color: rgb(255,175,175);">
             <p>Identifiants incorrects !</p>
         </div>
+    <?php elseif($_GET['alerte'] == 'wrongEmail'): ?>
+        <div class="Alerte" style="background-color: rgb(255,175,175);">
+            <p>Adresse mail invalide !</p>
+        </div>
     <?php elseif($_GET['alerte'] == 'wrongMdp'): ?>
         <div class="Alerte" style="background-color: rgb(255,175,175);">
             <p>Mauvais Mot de Passe !</p>
@@ -66,6 +70,10 @@
     <?php elseif($_GET['alerte'] == 'uploadSuccess'): ?>
         <div class="Alerte" style="background-color: rgb(175,255,175);">
             <p>Appareil ajouté avec succès !</p>
+        </div>
+    <?php elseif($_GET['alerte'] == 'spamReset'): ?>
+        <div class="Alerte" style="background-color: rgb(255,175,175);">
+            <p>Vous avez déjà demandé un nouveau mot de passe il y a moins de 24h !</p>
         </div>
     <?php endif; ?>
 <?php endif; ?>

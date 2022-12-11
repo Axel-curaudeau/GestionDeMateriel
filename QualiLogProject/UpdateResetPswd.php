@@ -13,7 +13,7 @@ include("../inc/constantes.inc.php"); ?>
     <?php
     if(!isset($_POST["Mail"]))
     {
-        header("Location: ForgotPswd.php?alerte=noEmail");
+        header("Location: ForgotPswd.php?alerte=wrongEmail");
         return;
     }
 
@@ -30,7 +30,7 @@ include("../inc/constantes.inc.php"); ?>
     if(count($res) == 0)
     {
         echo($Mail);
-        header("Location: ForgotPswd.php?alerte=EmailError");
+        header("Location: ForgotPswd.php?alerte=mailAlreadyUsed");
         return;
     }
     

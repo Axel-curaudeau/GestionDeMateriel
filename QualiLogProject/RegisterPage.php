@@ -12,7 +12,7 @@ include("../inc/constantes.inc.php")?>
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
 
     <?php 
-    include('Alerts.php');
+    include('Alertes.php');
     ?>
 
     <form action="Register.php" method="POST">

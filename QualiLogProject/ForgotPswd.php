@@ -14,25 +14,11 @@ include("../inc/constantes.inc.php") ?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include 'menubar.php'
+    include('menubar.php');
+    include('Alertes.php');
 ?>
 
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
-    <?php if(isset($_GET['alerte'])): ?>
-        <?php if($_GET['alerte'] == 'noEmail'): ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Adresse mail invalide !</p>
-            </div>
-        <?php elseif($_GET['alerte'] == 'EmailError'): ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Adresse mail invalide !</p>
-            </div>
-        <?php elseif($_GET['alerte'] == 'spamReset'): ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Vous devez attendre 24h depuis le dernier changement de mot de passe !</p>
-            </div>
-        <?php endif; ?>
-    <?php endif; ?>
     <form action="UpdateResetPswd.php" method="POST">
         <div class="container", align="left">  
             <h1 style="white-space: nowrap; margin-top: 0;">Mot de passe oublié</h1>
