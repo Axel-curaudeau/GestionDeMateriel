@@ -21,7 +21,7 @@
     <div class="listeMateriel">
 
         <!-- objet à remplir pour ajouter à la BDD -->
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form action="AddNewDevice.php" method="post" enctype="multipart/form-data">
         <div class="Materiel MaterielAdd">
             <a href="#" onclick="performClick('#inputNewPhoto')">
                 <img src="https://static.vecteezy.com/ti/vecteur-libre/p3/6253524-icone-de-point-d-interrogation-gratuit-vectoriel.jpg" alt="Ajouter un objet">
@@ -113,6 +113,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <script type="text/javascript">$('input[name="datefilter"]').daterangepicker({autoUpdateInput: false,locale: {cancelLabel: 'Cancel', applyLabel: 'Réserver', format: 'DD/MM/YYYY'}}, function(start, end, label) {console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');});</script>
-    <script type="text/javascript" src="Scripts/addMaterialPhoto.js"></script>
+    <script type="text/javascript" src="Scripts/addMaterial.js"></script>
 </body>
 </html>

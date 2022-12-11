@@ -18,4 +18,5 @@ $('.MaterielAdd input[type="submit"]').on('click', function () {
         alert("Choisissez une photo en cliquant sur l'image");
         return false;
     }
+    console.log($('.MaterielAdd input[type="text"]').val());
 });
