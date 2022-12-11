@@ -62,34 +62,33 @@
         $query_is_available->execute();
         $query_liste_materiel->execute();
 
-        while($row = $query_liste_materiel->fetch()){
-            echo '<div class="Materiel">';
-            echo '  <img src="files/'.$row['Reference'].'.jpg" alt="'.$row['Name'].'">';
-            echo '  <div class="DescriptionMateriel">';
-            echo '      <div class="nomMateriel">';
-            echo '          <p>'.$row['Name'].'</p>';
-            if (isAvailable($row['Reference'], $mysqlClient) == 0) {
-                echo '          <img src="img/available.png" style="width:20px;height:20px;">';
-            } else {
-                echo '          <img src="img/borrowed.png" style="width:20px;height:20px;">';
-            }
-            echo '      </div>';
-            echo '      <hr>';
-            echo '      <div class="versionEtRef">';
-            echo '          <div class="version">';
-            echo '              <p>Version :</p>';
-            echo '              <p>'.$row['Version'].'</p>';
-            echo '          </div>';
-            echo '          <div class="reference">';
-            echo '              <p>Référence :</p>';
-            echo '              <p>'.$row['Reference'].'</p>';
-            echo '          </div>';
-            echo '      </div>';
-            echo '      <input type="text" name="datefilter" class="form-control" placeholder="Réserver..."/>';
-            echo '  </div>';
-            echo '</div>';
-        }
-        ?>
+        while($row = $query_liste_materiel->fetch()){?>
+            <div class="Materiel">
+            <img src= <?php echo('files/'.$row['Reference'].'.jpg'); ?> alt= <?php echo($row['Name']); ?>>
+            <div class="DescriptionMateriel">
+                <div class="nomMateriel">
+                    <p><?php echo($row['Name']); ?></p>
+            <?php if (isAvailable($row['Reference'], $mysqlClient) == 0) {?>
+                        <img src="img/available.png" style="width:20px;height:20px;">
+            <?php } else { ?>
+                        <img src="img/borrowed.png" style="width:20px;height:20px;">
+            <?php } ?>
+                </div>
+                <hr>
+                <div class="versionEtRef">
+                    <div class="version">
+                        <p>Version :</p>
+                        <p><?php echo($row['Version']); ?></p>
+                    </div>
+                    <div class="reference">
+                        <p>Référence :</p>
+                        <p><?php echo($row['Reference']); ?></p>
+                    </div>
+                </div>
+                <input type="text" name="datefilter" class="form-control" placeholder="Réserver..."/>
+            </div>
+            </div>
+        <?php } ?>
     </div>
     <div style="height:10000px;">
     </div>
