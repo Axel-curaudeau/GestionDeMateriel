@@ -16,6 +16,10 @@ include("../inc/bddconnect.inc.php")?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
+    if(!$_SESSION['IsAdmin']) {
+        header("Location: Home.php?alerte=notAdmin");
+        return;
+    }
     include 'menubar.php'
     ?>
     

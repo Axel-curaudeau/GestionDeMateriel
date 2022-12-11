@@ -1,5 +1,10 @@
 <?php session_start(); 
-include("../inc/constantes.inc.php")?>
+include("../inc/constantes.inc.php")
+include("../inc/bddconnect.inc.php");
+
+
+}
+?>
 
 <!DOCTYPE html>   
 <html>   
@@ -11,10 +16,15 @@ include("../inc/constantes.inc.php")?>
 </head>  
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php if(!isset($_SESSION['MAIL'])) {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
-        return;
+            header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
+            return;
+        }
+        if(!$_SESSION['IsAdmin']) {
+            header("Location: ".DOMAIN_URL."/QualiLogProject/Home.php?alerte=notAdmin");
+            return;
+        }
         include 'menubar.php';
-    }?>
+    ?>
 
     <form action="NewDevice.php" method="POST">
         <div class="container" align="left">  
