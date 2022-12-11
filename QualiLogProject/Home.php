@@ -21,31 +21,33 @@
     <div class="listeMateriel">
 
         <!-- objet à remplir pour ajouter à la BDD -->
-        <form action="AddNewDevice.php" method="post" enctype="multipart/form-data">
-        <div class="Materiel MaterielAdd">
-            <a href="#" onclick="performClick('#inputNewPhoto')">
-                <img src="https://static.vecteezy.com/ti/vecteur-libre/p3/6253524-icone-de-point-d-interrogation-gratuit-vectoriel.jpg" alt="Ajouter un objet">
-            </a>
-            <div class="DescriptionMateriel">
-                <div class="nomMateriel">
-                    <input type="text" name="name" placeholder="Nom de l'equipement" required>
-                </div>
-                <hr>
-                <div class="versionEtRef">
-                    <div class="version">
-                        <p>Version :</p>
-                        <input type="text" name="version" placeholder="Version" required>
+        <?php if ($_SESSION["IsAdmin"] == 1) { ?>
+            <form action="AddNewDevice.php" method="post" enctype="multipart/form-data">
+            <div class="Materiel MaterielAdd">
+                <a href="#" onclick="performClick('#inputNewPhoto')">
+                    <img src="https://static.vecteezy.com/ti/vecteur-libre/p3/6253524-icone-de-point-d-interrogation-gratuit-vectoriel.jpg" alt="Ajouter un objet">
+                </a>
+                <div class="DescriptionMateriel">
+                    <div class="nomMateriel">
+                        <input type="text" name="name" placeholder="Nom de l'equipement" required>
                     </div>
-                    <div class="reference">
-                        <p>Référence :</p>
-                        <input type="text" name="reference" placeholder="Référence" required>
+                    <hr>
+                    <div class="versionEtRef">
+                        <div class="version">
+                            <p>Version :</p>
+                            <input type="text" name="version" placeholder="Version" required>
+                        </div>
+                        <div class="reference">
+                            <p>Référence :</p>
+                            <input type="text" name="reference" placeholder="Référence" required>
+                        </div>
                     </div>
+                    <input type="file" name="fileToUpload" id="inputNewPhoto" style="display:none;">
+                    <input type="submit" value="Ajouter" name="submit">
                 </div>
-                <input type="file" name="fileToUpload" id="inputNewPhoto" style="display:none;">
-                <input type="submit" value="Ajouter" name="submit">
             </div>
-        </div>
-        </form>
+            </form>
+        <?php } ?>
         
 
 
