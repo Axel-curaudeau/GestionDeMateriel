@@ -11,25 +11,12 @@
 <body style="background-color: var(--backgroundColor);" id='body'>
     <?php
     if(!isset($_SESSION['MAIL'])) {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=notConnected");
+        header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
+    include 'menubar.php'
     ?>
-
-    <div class="bandeau">
-        <div class="bandeauElement">
-            <a href="ProfilPage.php">Mon Profil</a>
-        </div>
-        <div class="bandeauElement">
-            <a href="AdminPage.php">Admin</a>
-        </div>
-        <div class="bandeauElement">
-            <a href="Deconnexion.php">Se Déconnecter</a>
-        </div>
-    </div>
-
-    <br/><br/>
-    <p class="titreCatalogue">Catalogue de matériel</p>
+    <p class="titrePage">Catalogue de matériel</p>
     <hr class="titleRule">
     <div class="listeMateriel">
 
@@ -54,12 +41,9 @@
         }
 
         $q_liste_materiel = "SELECT * FROM WL_Equipment";
-        $q_is_available = "SELECT * FROM WL_Equipment NATURAL JOIN WL_Reservation";
 
         $query_liste_materiel = $mysqlClient->prepare($q_liste_materiel);
-        $query_is_available = $mysqlClient->prepare($q_is_available);
 
-        $query_is_available->execute();
         $query_liste_materiel->execute();
 
         while($row = $query_liste_materiel->fetch()){?>

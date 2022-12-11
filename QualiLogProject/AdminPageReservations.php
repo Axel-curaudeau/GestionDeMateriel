@@ -18,16 +18,11 @@ include("../inc/bddconnect.inc.php")?>
     }
     include 'menubar.php'
     ?>
-    
-    <p class="titrePage">Panneau de contrôle administrateur</p>
+    <p class="titrePage">Visualisation de l'ensemble des réservations</p>
     <hr class="titleRule">
-
-    <ul class="TitleList">
-        <li class="TitleListItem" ><a class="TitleLink" href="AdminPageAccounts.php">Gestion des Comptes</a></li>
-        <li class="TitleListItem" ><a class="TitleLink" href="AdminPageMaterial.php">Gestion du Matériel</a></li>
-        <li class="TitleListItem" ><a class="TitleLink" href="AdminPageReservations.php">Visualisation des réservations</a></li>
-    </ul>
-
+    
 
 </body>
 </html>
+<script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="Scripts/AdminPageScripts.js"></script>

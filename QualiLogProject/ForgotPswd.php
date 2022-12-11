@@ -9,6 +9,14 @@ include("../inc/constantes.inc.php") ?>
     <link rel="stylesheet" href="style/styleW.css">
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>
+<?php
+    if(!isset($_SESSION['MAIL'])) {
+        header("Location: LoginPage.php?alerte=notConnected");
+        return;
+    }
+    include 'menubar.php'
+?>
+
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php if(isset($_GET['alerte'])): ?>
         <?php if($_GET['alerte'] == 'noEmail'): ?>
