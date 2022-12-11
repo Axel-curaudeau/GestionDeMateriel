@@ -11,13 +11,9 @@ include("../inc/constantes.inc.php")?>
 </head>    
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
 
-    <?php if(isset($_GET['alerte'])): ?>
-        <?php if($_GET['alerte'] == 'mailFail'): ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Cette adresse mail est déjà utilisée !</p>
-            </div>
-        <?php endif; ?>
-    <?php endif; ?>
+    <?php 
+    include('Alerts.php');
+    ?>
 
     <form action="Register.php" method="POST">
         <div class="container" align="left">  

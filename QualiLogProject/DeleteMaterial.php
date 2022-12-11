@@ -1,7 +1,6 @@
 <?php
-include '../inc/bddconnect.inc.php';
-
 session_start();
+include '../inc/bddconnect.inc.php';
 
 // If the user is not connected, redirect him to the login page
 if(!isset($_SESSION['MAIL'])) {

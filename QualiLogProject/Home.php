@@ -9,13 +9,18 @@
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
 <body style="background-color: var(--backgroundColor);" id='body'>
+
     <?php
+    /* Vérification de la connexion */
     if(!isset($_SESSION['MAIL'])) {
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include 'menubar.php'
+
+    include('Alertes.php'); // Affichage des alertes
+    include('menubar.php'); // Affichage de la barre de navigation
     ?>
+
     <p class="titrePage">Catalogue de matériel</p>
     <hr class="titleRule">
     <div class="listeMateriel">

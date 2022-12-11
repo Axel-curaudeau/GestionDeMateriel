@@ -16,17 +16,9 @@ include("../inc/bddconnect.inc.php")?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include 'menubar.php'
+    include('menubar.php');
+    include('Alerts.php');
     ?>
-
-<?php if(isset($_GET['alerte'])){ ?>
-        <?php if($_GET['alerte'] == 'mailAlreadyUsed'){ ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Cette adresse mail est déjà utilisée !</p>
-            </div>
-        <?php 
-        }
-    } ?>
 
     <?php
     $sql = 'SELECT * FROM wl_users WHERE UserId = :UserId;';
