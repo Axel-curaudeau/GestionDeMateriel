@@ -70,4 +70,4 @@ include("../inc/bddconnect.inc.php")?>
 </body>
 </html>
 <script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="Scripts/AdminPageScripts.js"></script>
+<script src="scripts/AdminPageScripts.js"></script>

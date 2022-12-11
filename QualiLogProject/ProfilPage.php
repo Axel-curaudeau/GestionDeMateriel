@@ -38,4 +38,4 @@ include("../inc/constantes.inc.php");?>
 </html>
 
 <script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="Scripts/returnScript.js"></script>
+<script src="scripts/returnScript.js"></script>
