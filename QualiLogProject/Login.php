@@ -6,14 +6,14 @@ include("../inc/constantes.inc.php");
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>QualiLog | Login</title>  
+    <title>Gestion de Matériel | Connexion</title>  
     <link rel="stylesheet" href="style/style.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
 <body>
     <?php
     if(!isset($_POST["Mail"]) || !isset($_POST["Password"])) {
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
+        header("Location: LoginPage.php?alerte=failConnect");
         return;
     }
 
@@ -30,7 +30,7 @@ include("../inc/constantes.inc.php");
 
     if (count($res) == 0) {
         $_SESSION['LOGGED_MAIL_FAIL'] = $Mail;
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
+        header("Location: LoginPage.php?alerte=failConnect");
         return;
     }
 
@@ -38,11 +38,11 @@ include("../inc/constantes.inc.php");
         $_SESSION['USERID'] = $res[0]['UserId'];
         $_SESSION['MAIL'] = $Mail;
         $_SESSION['IsAdmin'] = $res[0]['IsAdmin'];
-        header("Location: ".DOMAIN_URL."/QualiLogProject/Home.php");
+        header("Location: Home.php");
     }
     else{
         $_SESSION['LOGGED_MAIL_FAIL'] = $Mail;
-        header("Location: ".DOMAIN_URL."/QualiLogProject/LoginPage.php?alerte=failConnect");
+        header("Location: LoginPage.php?alerte=failConnect");
     }
 
     ?>

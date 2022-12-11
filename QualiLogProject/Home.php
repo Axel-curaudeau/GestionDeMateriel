@@ -4,7 +4,7 @@
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>QualiLogProject | Home</title>  
+    <title>Gestion de Matériel | Accueil</title>  
     <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
 </head>    
