@@ -20,10 +20,38 @@
     <hr class="titleRule">
     <div class="listeMateriel">
 
+        <!-- objet à remplir pour ajouter à la BDD -->
+        <form action="#" method="post" enctype="multipart/form-data">
+        <div class="Materiel MaterielAdd">
+            <a href="#" onclick="performClick('#inputNewPhoto')">
+                <img src="https://static.vecteezy.com/ti/vecteur-libre/p3/6253524-icone-de-point-d-interrogation-gratuit-vectoriel.jpg" alt="Ajouter un objet">
+            </a>
+            <div class="DescriptionMateriel">
+                <div class="nomMateriel">
+                    <input type="text" name="name" placeholder="Nom de l'equipement" required>
+                </div>
+                <hr>
+                <div class="versionEtRef">
+                    <div class="version">
+                        <p>Version :</p>
+                        <input type="text" name="version" placeholder="Version" required>
+                    </div>
+                    <div class="reference">
+                        <p>Référence :</p>
+                        <input type="text" name="reference" placeholder="Référence" required>
+                    </div>
+                </div>
+                <input type="file" name="fileToUpload" id="inputNewPhoto" style="display:none;">
+                <input type="submit" value="Ajouter" name="submit">
+            </div>
+        </div>
+        </form>
         
 
-        <?php
 
+
+        <!-- Liste des objets de la BDD -->
+        <?php
         include ('../inc/bddconnect.inc.php');
 
         function isAvailable($reference, $mysqlClient) {
@@ -83,6 +111,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
     <script type="text/javascript">$('input[name="datefilter"]').daterangepicker({autoUpdateInput: false,locale: {cancelLabel: 'Cancel', applyLabel: 'Réserver', format: 'DD/MM/YYYY'}}, function(start, end, label) {console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');});</script>
+    <script type="text/javascript" src="Scripts/addMaterialPhoto.js"></script>
 </body>
 </html>
