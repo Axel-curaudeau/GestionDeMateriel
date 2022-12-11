@@ -3,9 +3,17 @@
         <div class="Alerte" style="background-color: rgb(175,255,175);">
             <p>Utilisateur enregistré, vous pouvez vous connecter !</p>
         </div>
+    <?php elseif($_GET['alerte'] == 'mailAlreadyUsed'): ?>
+        <div class="Alerte" style="background-color: rgb(255,175,175);">
+            <p>Cette adresse mail est déjà utilisée !</p>
+        </div>
     <?php elseif($_GET['alerte'] == 'failConnect'): ?>
         <div class="Alerte" style="background-color: rgb(255,175,175);">
             <p>Identifiants incorrects !</p>
+        </div>
+    <?php elseif($_GET['alerte'] == 'wrongMdp'): ?>
+        <div class="Alerte" style="background-color: rgb(255,175,175);">
+            <p>Mauvais Mot de Passe !</p>
         </div>
     <?php elseif($_GET['alerte'] == 'notConnected'): ?>
         <div class="Alerte" style="background-color: rgb(255,175,175);">

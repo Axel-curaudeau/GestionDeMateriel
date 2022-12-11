@@ -26,7 +26,7 @@ include("../inc/constantes.inc.php"); ?>
     $res = $resStat->fetchAll();
 
     if (count($res) != 0) {
-        header("Location: RegisterPage.php?alerte=mailFail");
+        header("Location: RegisterPage.php?alerte=mailAlreadyUsed");
         return;
     }
 

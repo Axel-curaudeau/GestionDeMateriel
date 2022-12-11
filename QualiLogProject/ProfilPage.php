@@ -11,24 +11,14 @@ include("../inc/constantes.inc.php");?>
 </head>    
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php
-    if(!isset($_SESSION['MAIL']))
-    {
+    if(!isset($_SESSION['MAIL'])) {
         header("Location: LoginPage.php?alerte=notConnected");
         return;
         include 'menubar.php';
     }
+    include('Alerts.php');
     ?>
-    <?php if(isset($_GET['alerte'])): ?>
-        <?php if($_GET['alerte'] == 'wrongMdp'): ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Mauvais Mot de Passe !</p>
-            </div>
-        <?php elseif($_GET['alerte'] == 'mailAlreadyUsed'): ?>
-            <div class="Alerte" style="background-color: rgb(255,175,175);">
-                <p>Cette adresse mail est déjà utilisée !</p>
-            </div>
-        <?php endif; ?>
-    <?php endif; ?>
+
     <form action="Profil.php" method="POST">
         <div class="boxlogin" align="center">
             <div class="container" align="left">  
