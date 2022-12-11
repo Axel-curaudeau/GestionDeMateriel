@@ -18,49 +18,74 @@ include("../inc/bddconnect.inc.php")?>
     }
     include 'menubar.php'
     ?>
+    <p class="titrePage">Visualisation de l'ensemble des réservations</p>
+    <hr class="titleRule">
 
-    <h1 id="comptes" class=Titre>Gestion des Comptes</h1>
-    <div style="text-align:center;">
-        <a href="RegisterPage.php"><img src="img/signUp.png" style="width:30px;"></a>
-    </div>
-    <table class=Tableau>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Mail</th>
-            <th>Admin</th>
-            <th></th>            
-        </tr>
-
+    <div class="listeReservations">
         <?php
-        $sql = 'SELECT * FROM wl_users;';
-        $resStat = $mysqlClient->prepare($sql);
-        $resStat->execute();
-        $res = $resStat->fetchAll();
+        $q_utilisateurs = "SELECT DISTINCT UserID, firstname, lastname FROM WL_Reservation NATURAL JOIN WL_Users";
+        $query_utilisateurs = $mysqlClient->prepare($q_utilisateurs);
+        $query_utilisateurs->execute();
 
-        
-        foreach($res as $row) {
-            ?>
-            <tr id="<?php echo($row['UserID']);?>">
-                <td><?php echo($row['FirstName']);?></td>
-                <td><?php echo($row['LastName']);?></td>
-                <td><?php echo($row['Mail']);?></td>
-                <td>
-                    <input type="checkbox" <?php if($row['IsAdmin'] == 1) {echo("checked");}?>></input>
-                </td>
-                <td>
-                    <image src="./img/edit-button.png" alt=Modifier onclick="ChangeUser(<?php echo($row['UserID']); ?>)"></image>
-                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteUser(<?php echo($row['UserID']); ?>)"></image>
-                </td>
-            </tr>
-        <?php 
-        }?>
-    </table>
+        while ($row = $query_utilisateurs->fetch()){ ?>
+            <div class="reservationWrapper">
+                <details id="<?php echo($row['UserID']); ?>" class = "sumReservations">
+                    <summary>
+                        <?php echo($row['firstname']." ".$row['lastname']); ?>
+                    </summary>
+                    <div class="listeMateriel">
+                        <?php
+                        $q_reservations = "SELECT * FROM WL_Reservation NATURAL JOIN WL_Equipment WHERE UserID = :UserID";
+                        $query_reservations = $mysqlClient->prepare($q_reservations);
+                        $query_reservations->execute(array(
+                            'UserID' => $row['UserID']
+                        )); ?>
+
+                        
+                        <?php while($row2 = $query_reservations->fetch()){ ?>
+                            <div id="<?php echo($row2['Reference']); ?> " class="Materiel">
+                                <img src=<?php echo '"files/'.$row2['Reference'].'.jpg" alt="'.$row2['Name'].'"'; ?> >
+                                <div class="DescriptionMateriel">
+                                    <div class="nomMateriel">
+                                            <p><?php echo ($row2['Name']); ?></p>
+                                            <image src="./img/delete.png" alt=Supprimer onclick="DeleteMaterial('<?php echo($row2['Reference']); ?>')" style="width:20px;height:20px;"></image>
+                                    </div>
+                                    <hr>
+                                    <div class="versionEtRef">
+                                        <div class="version">
+                                            <p>Version :</p>
+                                            <p><?php echo ($row2['Version']); ?></p>
+                                        </div>
+                                        <div class="reference">
+                                            <p>Référence :</p>
+                                            <p><?php echo ($row2['Reference']); ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="dateReservation">
+                                        <p>Période de réservation :</p>
+                                        <p style="font-weight: bold;">
+                                            <?php
+                                            
+                                            $begindate = str_replace('-"', '/', $row2['BeginDate']);  
+                                            $enddate = str_replace('-"', '/', $row2['EndDate']);
+
+                                            $newBeginDate = date("d/m/Y", strtotime($begindate));
+                                            $newEndDate = date("d/m/Y", strtotime($enddate));  
+                                            echo ('Du '.$newBeginDate.' au '.$newEndDate); 
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }; ?>
+                        
+
+                </details>
+            </div>
+
+        <?php }; ?>
+    </div>
     
-    <h1 id="materiel" class=Titre>Gestion du Matériel</h1>
-
-    <div id=NewDeviceButton><a href="NewDevicePage.php">Créer un nouveau Matériel</a></div>
-
 
 </body>
 </html>
