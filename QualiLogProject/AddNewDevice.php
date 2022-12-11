@@ -83,7 +83,7 @@ if (($infosImg[0] != REQUIRED_WIDTH) || ($infosImg[1] != REQUIRED_HEIGHT)) {
 
 /* --- Vérification du tableau d'erreurs --- */
 if (isset($_FILES['fileToUpload']['error']) && UPLOAD_ERR_OK !== $_FILES['fileToUpload']['error']) {
-    header("Location: Home.php?alerte=error");
+    header("Location: Home.php?alerte=errorTable&errornum=".$_FILES['fileToUpload']['error']);
     return;
 }
 
@@ -104,6 +104,6 @@ $sql = 'INSERT INTO WL_Equipment (Reference, Name, Version) VALUES (:ref, :name,
 $resStat = $mysqlClient->prepare($sql);
 $resStat->execute(['ref' => $DeviceRef, 'name' => $DeviceName, 'version' => $DeviceVersion]);
 
-header("Location: Home.php?alerte=success");
+header("Location: Home.php?alerte=uploadSuccess");
 
 ?>
