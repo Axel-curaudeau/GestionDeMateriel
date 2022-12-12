@@ -290,6 +290,10 @@ summary {
     background-color: var(--invalideDateRed2);
 }
 
+.today.off.disabled.active.start-date.active.end-date {
+    background-color: var(--invalideDateRed2);
+}
+
 .daterangepicker button:nth-child(2){
     color: black;
     background-color: lightgray;

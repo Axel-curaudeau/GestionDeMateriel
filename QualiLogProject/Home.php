@@ -104,7 +104,7 @@
                         <p><?php echo($row['Reference']); ?></p>
                     </div>
                 </div>
-                <input type="text" name="datefilter" class="form-control" placeholder="Réserver..."/>
+                <input type="text" name="datefilter" class="form-control" id="input<?php echo($row['Reference']); ?>"  placeholder="Réserver..."/>
             </div>
             </div>
         <?php } ?>
