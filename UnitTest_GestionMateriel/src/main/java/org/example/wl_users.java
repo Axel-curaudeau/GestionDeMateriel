@@ -1,13 +1,13 @@
 package org.example;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
 public class wl_users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int UserID;
 
     private String FirstName;
@@ -16,15 +16,27 @@ public class wl_users {
 
     private String Mail;
 
-    private String RegistrationPassword;
+    private String RegistrationNumber;
 
     private String Pswd;
 
-    private boolean IsAdmin;
+    private int IsAdmin;
 
     private String ResetPswd;
 
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime LastResetPswd;
+
+    public wl_users() {
+
+    }
+
+    public wl_users(String FirstName, String LastName, String Mail, int IsAdmin) {
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Mail = Mail;
+        this.Pswd = "$2y$10$rz4y2mQ8pIJ4CJLfLG3/O.LBJpBQfm5aYoEBoGFEEXh6SGTLPcDAm"; // equiv to "user"
+        this.IsAdmin = IsAdmin;
+    }
 
 }
