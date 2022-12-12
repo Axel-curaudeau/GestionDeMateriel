@@ -75,7 +75,7 @@ function printDispo(dispo) {
 
 let dispo = [];
 
-fetch('http://localhost:8888/QualiLogProject/dispoJSON.php')
+fetch('dispoJSON.php')
     .then(function(res) {
         if (res.ok) {
             return res.json();

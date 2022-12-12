@@ -104,7 +104,7 @@ summary {
 }
 
 .Alerte{
-    z-index: 2;
+    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
@@ -118,9 +118,9 @@ summary {
 }
 
 @keyframes disp {
-    from { opacity: 100%; }
-    80% { opacity: 100%; }
-    to { opacity: 0%; }
+    from { opacity: 100%; z-index: 2;}
+    80% { opacity: 100%; z-index: 2;}
+    to { opacity: 0%; z-index: -1px;}
 }
 
 .bandeau {

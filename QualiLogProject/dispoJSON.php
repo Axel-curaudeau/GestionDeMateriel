@@ -3,7 +3,7 @@ include("../inc/bddconnect.inc.php");
 
 header('Content-Type: application/json');
 
-$sql = 'SELECT WL_Equipment.Reference, BeginDate, EndDate FROM wl_reservation RIGHT OUTER JOIN WL_Equipment ON WL_Reservation.Reference=WL_Equipment.Reference;';
+$sql = 'SELECT wl_equipment.Reference, BeginDate, EndDate FROM wl_reservation RIGHT OUTER JOIN wl_equipment ON wl_reservation.Reference=wl_equipment.Reference;';
 $resStat = $mysqlClient->prepare($sql);
 $resStat->execute();
 $res = $resStat->fetchAll();
