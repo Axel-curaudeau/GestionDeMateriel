@@ -110,12 +110,6 @@
         <?php } ?>
     </div>
 
-    <!-- DEV : Pour tester le scroll -->
-    <div style="height:10000px;">
-    </div>
-    <br>
-    <br>
-
     <!-- Scripts DateRangePicker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

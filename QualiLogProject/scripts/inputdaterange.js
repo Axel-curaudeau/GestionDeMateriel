@@ -1,6 +1,8 @@
 $('input[name="datefilter"]')
     .daterangepicker({
         autoUpdateInput: false,
+        drops: "auto",
+        opens: "center",
         isInvalidDate: function(date) {
             let id = $(this).attr('element').attr('id').substring(5)
             if (dispo[id][0]['begin'] != null) {

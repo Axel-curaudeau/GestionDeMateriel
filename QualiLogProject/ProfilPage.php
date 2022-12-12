@@ -15,23 +15,20 @@ include("../inc/constantes.inc.php");?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include('menubar.php');
     include('Alerts.php');
     ?>
 
     <form action="Profil.php" method="POST">
-        <div class="boxlogin" align="center">
-            <div class="container" align="left">  
-                <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Mon profil</h1>
-                <label for="Mail">Email : </label>   
-                <input type="email" placeholder="adresse@email.fr" name="Mail" <?php echo('value="'.$_SESSION['MAIL'].'"'); ?> required>
-                <label for="AncienMotDePasse">Ancien Mot de Passe : </label>   
-                <input type="password" placeholder="Mot de Passe" name="AncienMotDePasse" required>
-                <label for="NouveauMotDePasse">Nouveau Mot de Passe : </label>   
-                <input type="password" placeholder="Mot de Passe" name="NouveauMotDePasse" required> 
-                <button type="submit" class="bouton">Mettre à jour</button>
-                <p style="margin: 0;"><a class=return>Retour</a></p>
-            </div>
+        <div class="container" align="left">  
+            <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Mon profil</h1>
+            <label for="Mail">Email : </label>   
+            <input type="email" placeholder="adresse@email.fr" name="Mail" <?php echo('value="'.$_SESSION['MAIL'].'"'); ?> required>
+            <label for="AncienMotDePasse">Ancien Mot de Passe : </label>   
+            <input type="password" placeholder="Mot de Passe" name="AncienMotDePasse" required>
+            <label for="NouveauMotDePasse">Nouveau Mot de Passe : </label>   
+            <input type="password" placeholder="Mot de Passe" name="NouveauMotDePasse" required> 
+            <button type="submit" class="bouton">Mettre à jour</button>
+            <p style="margin: 0;"><a class=return>Retour</a></p>
         </div>
     </form>  
 </body>     

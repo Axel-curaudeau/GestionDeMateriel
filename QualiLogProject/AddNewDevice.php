@@ -52,7 +52,7 @@ $extension = '';
 $nomImage = '';
 
 /* --- Vérification de l'existance du dossier --- */
-if( !is_dir(TARGET) ) {
+if(!is_dir(TARGET)) {
     header("Location: Home.php?alerte=missingFolder");
     return;
 }
