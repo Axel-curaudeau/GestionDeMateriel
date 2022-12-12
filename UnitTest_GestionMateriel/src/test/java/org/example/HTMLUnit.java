@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HTMLUnit {
 
+
+
     @Test
     public void loginPage() throws Exception {
         try (final WebClient webClient = new WebClient()) {
@@ -27,16 +29,16 @@ public class HTMLUnit {
             final HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
 
             // click with empty input fields
-            final HtmlPage page2 = button.click();
+            HtmlPage page2 = button.click();
             assertEquals("Gestion de Matériel | Connexion", page2.getTitleText());
 
             // fill input fields
             mail.setValueAttribute("user@user.user");
             password.setValueAttribute("user");
 
-            // click with filled input fieldsi
-            final HtmlPage page3 = button.click();
-            assertEquals("Gestion de Matériel | Accueil", page3.getTitleText());
+            // click with filled input fields
+            page2 = button.click();
+            assertEquals("Gestion de Matériel | Accueil", page2.getTitleText());
         }
     }
 }
