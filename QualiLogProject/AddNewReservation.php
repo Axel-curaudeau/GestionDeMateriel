@@ -7,15 +7,6 @@ if(!isset($_SESSION['MAIL'])) {
     header("Location: LoginPage.php?alerte=notConnected");
     return;
 }
-if ($_SESSION["IsAdmin"] != 1) {
-    header("Location: Home.php?alerte=notAdmin");
-    return;
-}
-
-echo $_SESSION["MAIL"];
-echo $_SESSION["USERID"];
-
-
 
 $return_value = 0;
 
@@ -23,6 +14,8 @@ $return_value = 0;
 $BeginReservation = $_GET["debut"];
 $EndReservation = $_GET["fin"];
 $IdMaterial = $_GET["id"];
+
+
 
 /* --- Vérification de la possibilité de réservation --- */
 
@@ -36,6 +29,7 @@ if ($available_date_interval->rowCount() > 0) {
     /* --- Insertion de la réservation --- */
 
     $q_insert_reservation = 'INSERT INTO wl_reservation (BeginDate, EndDate, UserId, Reference) VALUES ("'.$BeginReservation.'", "'.$EndReservation.'", '.$_SESSION['USERID'].', "'.$IdMaterial.'")';
+    //echo $q_insert_reservation;
     $insert_reservation = $mysqlClient->prepare($q_insert_reservation);
     $insert_reservation->execute();
 

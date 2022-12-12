@@ -45,7 +45,7 @@ $('input[name="datefilter"]')
             
             let id = $(this).attr('element').attr('id').substring(5)
             console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (Id: ' + id + ')');
-            fetch('AddNewReservation.php?debut="'+start+'"&fin="'+end+'"&id="'+id+'"')
+            fetch('AddNewReservation.php?debut='+start.format('YYYY-MM-DD')+'&fin='+end.format('YYYY-MM-DD')+'&id='+id)
                 .then(function(res) {
                     if (res.ok) {
                         return res.text();
@@ -57,7 +57,7 @@ $('input[name="datefilter"]')
                     if (valeur == '0') {
                         console.log("Réservation ajoutée");
                         alert("Réservation ajoutée");
-                        document.location.href('Home.php?alerte="ReservationSuccessfull"');
+                        document.location.reload(true);
                     }
                     else {
                         console.log("Erreur lors de l'ajout de la réservation");
