@@ -15,7 +15,7 @@ include("../inc/constantes.inc.php");?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include('Alerts.php');
+    include('Alertes.php');
     ?>
 
     <form action="Profil.php" method="POST">
