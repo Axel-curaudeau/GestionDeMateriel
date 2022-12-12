@@ -42,7 +42,29 @@ $('input[name="datefilter"]')
             ],
             firstDay: 1}
         }, function(start, end, label) {
-            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            
+            let id = $(this).attr('element').attr('id').substring(5)
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (Id: ' + id + ')');
+            fetch('AddNewReservation.php?debut='+start.format('YYYY-MM-DD')+'&fin='+end.format('YYYY-MM-DD')+'&id='+id)
+                .then(function(res) {
+                    if (res.ok) {
+                        return res.text();
+                    }
+                })
+                .then(function(value) {
+                    console.log(value);
+                    valeur = value;
+                    if (valeur == '0') {
+                        console.log("Réservation ajoutée");
+                        alert("Réservation ajoutée");
+                        document.location.reload(true);
+                    }
+                    else {
+                        console.log("Erreur lors de l'ajout de la réservation");
+                        alert("Erreur lors de l'ajout de la réservation : La période selectionnée se superpose avec une autre réservation");
+                }
+            })
+            
         }, 
 );
 
@@ -75,13 +97,14 @@ function printDispo(dispo) {
 
 let dispo = [];
 
-fetch('http://localhost:8888/QualiLogProject/dispoJSON.php')
+fetch('dispoJSON.php')
     .then(function(res) {
         if (res.ok) {
             return res.json();
         }
     })
     .then(function(value) {
+        console.log(value);
         dispo = value;
         //addDispo(dispo);
         printDispo(dispo);
