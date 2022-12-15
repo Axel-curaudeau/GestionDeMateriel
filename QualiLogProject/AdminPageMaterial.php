@@ -27,12 +27,6 @@ include("../inc/bddconnect.inc.php")?>
     <hr class="titleRule">
     <div class="listeMateriel">
     
-    <div class="AddUserButton" style="text-align:center; overflow: auto;">
-        <a class="NoUnderline" href="RegisterPage.php">
-            <span style="vertical-align:middle;">Ajouter un nouvel appareil</span>
-            <img class="LinkIcon" src="img/add.png" style="width:20px; vertical-align:middle;">
-        </a>
-    </div>
 
     <?php
     $q_liste_materiel = "SELECT * FROM wl_equipment";

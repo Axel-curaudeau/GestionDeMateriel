@@ -20,3 +20,12 @@ $('.MaterielAdd input[type="submit"]').on('click', function () {
     }
     console.log($('.MaterielAdd input[type="text"]').val());
 });
+
+function DeleteMaterial(materialId){
+    console.log(materialId);
+    var r = confirm("Voulez-vous vraiment supprimer ce matériel ?");
+    if (r == true) {
+        fetch("DeleteMaterial.php?ref=" + materialId);
+        $("#"+materialId).remove();
+    }
+}
