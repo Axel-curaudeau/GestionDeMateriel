@@ -17,6 +17,7 @@
 # A faire
 - Changer les icônes de chaque page (actuellement le calendrier)
 - Si trop de matériel, faire une pagination
+- Refaire la page profil
 
 # Ne fonctionne pas
 
