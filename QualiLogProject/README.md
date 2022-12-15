@@ -16,9 +16,7 @@
 
 # A faire
 - Changer les icônes de chaque page (actuellement le calendrier)
-- Changer le bouton Se connecter sur la page de register par un bouton retour
-- Suppression d'un matériel si il a des reservations
-- suppression de l'image d'un matériel si on le supprime
+- Si trop de matériel, faire une pagination
 
 # Ne fonctionne pas
 
