@@ -104,23 +104,23 @@ summary {
 }
 
 .Alerte{
-    z-index: 2;
-    position: absolute;
+    z-index: 0;
+    position: fixed;
     top: 0;
     left: 0;
     height: 40px;
     width: 100%;
     text-align: center;
     line-height: 40px;
-    animation-duration: 5s;
+    animation-duration: 6s;
     animation-name: disp;
     opacity: 0%;
 }
 
 @keyframes disp {
-    from { opacity: 100%; }
-    80% { opacity: 100%; }
-    to { opacity: 0%; }
+    from { opacity: 100%; z-index: 1; }
+    80% { opacity: 100%; z-index: 1;}
+    to { opacity: 0%; z-index: 0;}
 }
 
 .bandeau {
