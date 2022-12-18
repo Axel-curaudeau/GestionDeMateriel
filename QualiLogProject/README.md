@@ -17,7 +17,9 @@
 # A faire
 - Changer les icônes de chaque page (actuellement le calendrier)
 - Si trop de matériel, faire une pagination
-- Refaire la page profil
+- Animations d'ouverture
+- Page de réservations globale
+
 
 # Ne fonctionne pas
 
