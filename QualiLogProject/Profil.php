@@ -22,25 +22,25 @@ include("../inc/constantes.inc.php");?>
 		$Mail = $_POST["Mail"];
 		$AncienMotDePasse = $_POST["AncienMotDePasse"];
 		$NouveauMotDePasse = $_POST["NouveauMotDePasse"];
-		$IdPers = $_SESSION['ORGAEDT_LOGGED_IDPERS'];
+		$IdPers = $_SESSION['USERID'];
 
-		$sql = 'SELECT * FROM OrgaEDT_Personne WHERE IdPers = :IdPers';
+		$sql = 'SELECT * FROM WL_Users WHERE UserID = :IdPers';
 		$resStat = $mysqlClient->prepare($sql);
 		$resStat->execute(['IdPers' => $IdPers]);
 		$res = $resStat->fetchAll();
 
 		if(password_verify($AncienMotDePasse, $res[0]['MotDePasse']) || password_verify($AncienMotDePasse, $res[0]['resetPswd'])){
 			if($Mail != $res[0]['Mail']){
-				$sql = 'SELECT * FROM OrgaEDT_Personne WHERE Mail = :Mail';
+				$sql = 'SELECT * FROM WL_Users WHERE Mail = :Mail';
 				$resStat = $mysqlClient->prepare($sql);
 				$resStat->execute(['Mail' => $Mail]);
 				$res = $resStat->fetchAll();
 				if(count($res) != 0){
-					header("Location: ".DOMAIN_URL."/OrgaEDT/ProfilPage.php?alerte=mailAlreadyUsed");
+					header("Location: ChangeCredentialsPage.php?alerte=mailAlreadyUsed");
 					return;
 				}
 			}
-	        $sql = 'UPDATE OrgaEDT_Personne SET Mail = :Mail, MotDePasse = :MotDePasse WHERE IdPers = :IdPers';
+	        $sql = 'UPDATE WL_Users SET Mail = :Mail, Pswd = :MotDePasse WHERE UserID = :IdPers';
 			$resStat = $mysqlClient->prepare($sql);
 			$resStat->execute(['Mail' => $Mail,
 							   'MotDePasse' => password_hash($NouveauMotDePasse, PASSWORD_DEFAULT),
@@ -50,7 +50,7 @@ include("../inc/constantes.inc.php");?>
 		}
 	    else{
 	        $_SESSION['ORGAEDT_LOGGED_MAIL_FAIL'] = $Mail;
-	        header("Location: ProfilPage.php?alerte=wrongMdp");
+	        header("Location: ChangeCredentialsPage.php?alerte=wrongMdp");
 	    }
 	?>
 </body>     
