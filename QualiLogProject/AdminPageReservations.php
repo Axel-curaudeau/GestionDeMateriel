@@ -50,7 +50,7 @@ include("../inc/bddconnect.inc.php")?>
                         <div class="DescriptionMateriel">
                             <div class="nomMateriel">
                                     <p><?php echo ($row2['Name']); ?></p>
-                                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteMaterial('<?php echo($row2['Reference']); ?>')" style="width:20px;height:20px;"></image>
+                                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteReservation('<?php echo($row2['ReservationID']); ?>')" style="width:20px;height:20px;"></image>
                             </div>
                             <hr>
                             <div class="versionEtRef">
