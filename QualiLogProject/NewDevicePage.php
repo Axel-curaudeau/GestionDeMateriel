@@ -19,7 +19,7 @@ if (!$_SESSION['IsAdmin']) {
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <title>Gestion de matériel | Ajou d'un nouveau matériel</title>  
     <link rel="stylesheet" href="style/styleW.css" />
-    <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
+    <link href="img/logo.png" rel="shortcut icon" type="image/png">
 </head>  
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php if(!isset($_SESSION['MAIL'])) {
