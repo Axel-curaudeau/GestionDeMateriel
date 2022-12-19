@@ -75,13 +75,5 @@
         <div class="Alerte" style="background-color: rgb(255,175,175);">
             <p>Vous avez déjà demandé un nouveau mot de passe il y a moins de 24h !</p>
         </div>
-    <?php elseif($_GET['alerte'] == 'reservSuccess'): ?>
-        <div class="Alerte" style="background-color: rgb(175,255,175);">
-            <p>Réservation ajoutée !</p>
-        </div>
-    <?php elseif($_GET['alerte'] == 'reservError'): ?>
-        <div class="Alerte" style="background-color: rgb(255,175,175);">
-            <p>Erreur lors de l'ajout de la réservation : La période selectionnée se superpose avec une autre réservation !</p>
-        </div>
     <?php endif; ?>
 <?php endif; ?>

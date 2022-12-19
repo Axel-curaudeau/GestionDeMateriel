@@ -41,33 +41,60 @@ $('input[name="datefilter"]')
                 "Decembre"
             ],
             firstDay: 1}
-        }
+        }, function(start, end, label) {
+            if (label == 'Réserver') {
+            
+                let id = $(this).attr('element').attr('id').substring(5)
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (Id: ' + id + ')');
+                fetch('AddNewReservation.php?debut='+start.format('YYYY-MM-DD')+'&fin='+end.format('YYYY-MM-DD')+'&id='+id)
+                    .then(function(res) {
+                        if (res.ok) {
+                            return res.text();
+                        }
+                    })
+                    .then(function(value) {
+                        console.log(value);
+                        valeur = value;
+                        if (valeur == '0') {
+                            console.log("Réservation ajoutée");
+                            alert("Réservation ajoutée");
+                            document.location.reload(true);
+                        }
+                        else {
+                            console.log("Erreur lors de l'ajout de la réservation");
+                            alert("Erreur lors de l'ajout de la réservation : La période selectionnée se superpose avec une autre réservation");
+                    }
+                })
+            }
+            
+        }, 
 );
 
-$('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-    let id = $(this).attr('id').substring(5);
 
-    let start = picker.startDate;
-    let end = picker.endDate;
-
-    fetch('AddNewReservation.php?debut='+start.format('YYYY-MM-DD')+'&fin='+end.format('YYYY-MM-DD')+'&id='+id)
-        .then(function(res) {
-            if (res.ok) {
-                return res.text();
+/*
+function printDispo(dispo) {
+    for (var elem in dispo) {
+        console.log(dispo[elem]);
+        $("#input"+elem).daterangepicker({
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Cancel',
+                applyLabel: 'Réserver',
+                format: 'DD/MM/YYYY',
+            },
+            isInvalidDate: function(date) {
+                for (var periode in dispo[elem]) {
+                    console.log("periode : "+periode);
+                    if (date.isBetween(dispo[elem][periode]['begin'], dispo[elem][periode]['end'], null, '[]')) {
+                        return true;
+                    }
+                }
             }
-        })
-        .then(function(value) {
-            valeur = value;
-            if (valeur == '0') {
-                //alert("Réservation ajoutée");
-                document.location.href = "Home.php?alerte=reservSuccess";
-            }
-            else {
-                //alert("Erreur lors de l'ajout de la réservation : La période selectionnée se superpose avec une autre réservation");
-                document.location.href = "Home.php?alerte=reservError";
-        }
-        })
-});
+        }, function(start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+    }
+}*/
 
 
 let dispo = [];
@@ -79,8 +106,18 @@ fetch('dispoJSON.php')
         }
     })
     .then(function(value) {
+        console.log(value);
         dispo = value;
+        //addDispo(dispo);
+        printDispo(dispo);
     })
     .catch(function(err) {
-        console.log(err)
+        // Une erreur est survenue
     });
+
+
+function addDispo(dispo) {
+    for (var elem in dispo) {
+        console.log(dispo[elem]);
+    }
+}
