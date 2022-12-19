@@ -82,11 +82,12 @@
         $query_liste_materiel->execute();
 
         while($row = $query_liste_materiel->fetch()){?>
-            <div class="Materiel">
+            <div class="Materiel" id=<?php echo($row['Reference']); ?>>
             <img src= <?php echo('files/'.$row['Reference'].'.jpg'); ?> alt= <?php echo($row['Name']); ?>>
             <div class="DescriptionMateriel">
                 <div class="nomMateriel">
                     <p><?php echo($row['Name']); ?></p>
+                    <image src="./img/delete.png" alt=Supprimer onclick="DeleteMaterial('<?php echo($row['Reference']); ?>')" style="width:20px;height:20px;"></image>
             <?php if (isAvailable($row['Reference'], $mysqlClient) == 0) {?>
                         <img src="img/available.png" style="width:20px;height:20px;">
             <?php } else { ?>

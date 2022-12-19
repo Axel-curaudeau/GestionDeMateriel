@@ -41,36 +41,33 @@ $('input[name="datefilter"]')
                 "Decembre"
             ],
             firstDay: 1}
-        }, function(start, end, label) {
-            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-        }, 
+        }
 );
 
+$('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+    let id = $(this).attr('id').substring(5);
 
-/*
-function printDispo(dispo) {
-    for (var elem in dispo) {
-        console.log(dispo[elem]);
-        $("#input"+elem).daterangepicker({
-            autoUpdateInput: false,
-            locale: {
-                cancelLabel: 'Cancel',
-                applyLabel: 'Réserver',
-                format: 'DD/MM/YYYY',
-            },
-            isInvalidDate: function(date) {
-                for (var periode in dispo[elem]) {
-                    console.log("periode : "+periode);
-                    if (date.isBetween(dispo[elem][periode]['begin'], dispo[elem][periode]['end'], null, '[]')) {
-                        return true;
-                    }
-                }
+    let start = picker.startDate;
+    let end = picker.endDate;
+
+    fetch('AddNewReservation.php?debut='+start.format('YYYY-MM-DD')+'&fin='+end.format('YYYY-MM-DD')+'&id='+id)
+        .then(function(res) {
+            if (res.ok) {
+                return res.text();
             }
-        }, function(start, end, label) {
-            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
-        });
-    }
-}*/
+        })
+        .then(function(value) {
+            valeur = value;
+            if (valeur == '0') {
+                //alert("Réservation ajoutée");
+                document.location.href = "Home.php?alerte=reservSuccess";
+            }
+            else {
+                //alert("Erreur lors de l'ajout de la réservation : La période selectionnée se superpose avec une autre réservation");
+                document.location.href = "Home.php?alerte=reservError";
+        }
+        })
+});
 
 
 let dispo = [];
@@ -83,16 +80,7 @@ fetch('dispoJSON.php')
     })
     .then(function(value) {
         dispo = value;
-        //addDispo(dispo);
-        printDispo(dispo);
     })
     .catch(function(err) {
-        // Une erreur est survenue
+        console.log(err)
     });
-
-
-function addDispo(dispo) {
-    for (var elem in dispo) {
-        console.log(dispo[elem]);
-    }
-}

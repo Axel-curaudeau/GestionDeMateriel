@@ -15,8 +15,8 @@
 
 
 # A faire
-- Changer les icones de chaque page (actuellement le calendrier)
-- Changer le bouton Se connecter sur la page de register par un bouton retour
+- Changer les icônes de chaque page (actuellement le calendrier)
+- Si trop de matériel, faire une pagination
 
 # Ne fonctionne pas
 

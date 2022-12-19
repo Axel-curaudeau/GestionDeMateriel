@@ -9,30 +9,79 @@ include("../inc/constantes.inc.php");?>
     <link rel="stylesheet" href="style/styleW.css">
     <link href="img/logo.png" rel="shortcut icon" type="image/png">
 </head>    
-<body style="height:100vh;display:flex;justify-content:center;align-items:center;">
+<body style="background-color: var(--homeBackgroundColor);" id='body'>
     <?php
     if(!isset($_SESSION['MAIL'])) {
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include('Alerts.php');
+    include('Alertes.php');
+    include 'menubar.php';
     ?>
 
-    <form action="Profil.php" method="POST">
-        <div class="container" align="left">  
-            <h1 style="white-space: nowrap; margin-top: 0;text-align: center;">Mon profil</h1>
-            <label for="Mail">Email : </label>   
-            <input type="email" placeholder="adresse@email.fr" name="Mail" <?php echo('value="'.$_SESSION['MAIL'].'"'); ?> required>
-            <label for="AncienMotDePasse">Ancien Mot de Passe : </label>   
-            <input type="password" placeholder="Mot de Passe" name="AncienMotDePasse" required>
-            <label for="NouveauMotDePasse">Nouveau Mot de Passe : </label>   
-            <input type="password" placeholder="Mot de Passe" name="NouveauMotDePasse" required> 
-            <button type="submit" class="bouton">Mettre à jour</button>
-            <p style="margin: 0;"><a class=return>Retour</a></p>
-        </div>
-    </form>  
+    <p class="titrePage">Profil utilisateur</p>
+    <hr class="titleRule">
+
+    <div class="AddUserButton" style="text-align:center; overflow: auto;">
+        <a class="NoUnderline" href="ChangeCredentialsPage.php">
+            <span style="vertical-align:middle;">Changer vos identifiants</span>
+            <img class="LinkIcon" src="img/refresh.png" style="width:20px; vertical-align:middle;">
+        </a>
+    </div>
+
+    <h2 style="margin-top : 30px; margin-left : 5%;">Vos réservations actuelles :</h2>
+    <div class="listeMateriel">
+        <?php
+        $q_reservations = "SELECT * FROM WL_Reservation NATURAL JOIN WL_Equipment WHERE UserID = :UserID";
+        $query_reservations = $mysqlClient->prepare($q_reservations);
+        $query_reservations->execute(['UserID' => $_SESSION['USERID']]); ?>
+
+        
+        <?php
+        if ($query_reservations->rowCount() == 0): ?>
+            <p style="text-align:center; margin-top: 20px;">Vous n'avez aucune réservation en cours.</p>
+        <?php endif;
+        while($row2 = $query_reservations->fetch()){ ?>
+
+            <div id="<?php echo($row2['Reference']); ?> " class="Materiel">
+                <img src=<?php echo '"files/'.$row2['Reference'].'.jpg" alt="'.$row2['Name'].'"'; ?> >
+                <div class="DescriptionMateriel">
+                    <div class="nomMateriel">
+                            <p><?php echo ($row2['Name']); ?></p>
+                            <image src="./img/delete.png" alt=Supprimer onclick="DeleteReservation('<?php echo($row2['ReservationID']); ?>')" style="width:20px;height:20px;"></image>
+                    </div>
+                    <hr>
+                    <div class="versionEtRef">
+                        <div class="version">
+                            <p>Version :</p>
+                            <p><?php echo ($row2['Version']); ?></p>
+                        </div>
+                        <div class="reference">
+                            <p>Référence :</p>
+                            <p><?php echo ($row2['Reference']); ?></p>
+                        </div>
+                    </div>
+                    <div class="dateReservation">
+                        <p>Période de réservation :</p>
+                        <p style="font-weight: bold;">
+                            <?php
+                            
+                            $begindate = str_replace('-"', '/', $row2['BeginDate']);  
+                            $enddate = str_replace('-"', '/', $row2['EndDate']);
+
+                            $newBeginDate = date("d/m/Y", strtotime($begindate));
+                            $newEndDate = date("d/m/Y", strtotime($enddate));  
+                            echo ('Du '.$newBeginDate.' au '.$newEndDate); 
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <?php }; ?>
+    </div>
 </body>     
 </html>
 
 <script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="Scripts/AdminPageScripts.js"></script>
 <script src="scripts/returnScript.js"></script>
