@@ -8,7 +8,7 @@ include("../inc/bddconnect.inc.php")?>
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <title>Gestion de Matériel | Modification d'utilisateur</title>  
     <link rel="stylesheet" href="style/styleW.css" />
-    <link href="img/edit_calendar.png" rel="shortcut icon" type="image/png">
+    <link href="img/logo.png" rel="shortcut icon" type="image/png">
 </head>    
 <body style="height:100vh;display:flex;justify-content:center;align-items:center;">
     <?php
