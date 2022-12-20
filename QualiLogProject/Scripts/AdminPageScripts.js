@@ -33,7 +33,6 @@ function DeleteReservation(reservationId){
     }
 }
 
-
 $(".Tableau input").change(function() {
     var r = confirm("Voulez-vous vraiment modifier les droits de cet utilisateur ?");
     if (r == true) {

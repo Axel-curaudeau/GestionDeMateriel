@@ -14,23 +14,16 @@ $privilege = $query_privilege->fetch();
     <div class="bandeauElement">
         <a href="Home.php">Accueil</a>
     </div>
+    <div class="bandeauElement">
+        <a href="ReservationPage.php">Réservations</a>
+    </div>
     <?php if ($privilege['isAdmin'] == 1) : ?>
         <div class="bandeauElement">
-            <a href="AdminPageReservations.php">Gestion des Réservations</a>
-        </div>
-    <?php else : ?>
-        <div class="bandeauElement">
-            <a href="ReservationPage.php">Réservations</a>
-        </div>
-    <?php endif; ?>
-    <?php
-    if ($privilege['isAdmin'] == 1) : ?>
-        <div class="bandeauElement">
-            <a href="AdminPageAccounts.php">Gestion des Comptes</a>
+            <a href="AdminPageAccounts.php">Comptes</a>
         </div>
     <?php endif; ?>
     <div class="bandeauElement">
-        <a href="Deconnexion.php">Se Déconnecter</a>
+        <a href="Deconnexion.php">Deconnexion</a>
     </div>
 </div>
 
