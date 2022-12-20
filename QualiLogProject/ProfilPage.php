@@ -5,11 +5,7 @@ include("../inc/constantes.inc.php");?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-<<<<<<< HEAD
-    <title>Gestion de Matériel | Changement d'identifiants</title>  
-=======
     <title>Gestion de Matériel | Profil</title>  
->>>>>>> main
     <link rel="stylesheet" href="style/styleW.css">
     <link href="img/logo.png" rel="shortcut icon" type="image/png">
 </head>    
