@@ -16,8 +16,7 @@ include("../inc/bddconnect.inc.php")?>
         header("Location: LoginPage.php?alerte=notConnected");
         return;
     }
-    include('menubar.php');
-    include('Alerts.php');
+    include('Alertes.php');
     ?>
 
     <?php
@@ -48,7 +47,7 @@ include("../inc/bddconnect.inc.php")?>
                 <button type="submit" class="bouton">Mettre à jour</button>
                 <p style="margin: 0;"><a class=return>Retour</a></p>
 
-                <input type="hidden" name="UserId" value=<?php echo($res[0]['UserId']) ?>>
+                <input type="hidden" name="UserId" value=<?php echo($res[0]['UserID']) ?>>
             </div>
         </div>
     </form>  
