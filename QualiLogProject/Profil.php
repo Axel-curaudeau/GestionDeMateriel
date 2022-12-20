@@ -19,30 +19,38 @@ include("../inc/constantes.inc.php");?>
 
 		include("../inc/bddconnect.inc.php");
 
+
+		$Prenom = $_POST["Prenom"];
+		$Nom = $_POST["Nom"];
 		$Mail = $_POST["Mail"];
 		$AncienMotDePasse = $_POST["AncienMotDePasse"];
 		$NouveauMotDePasse = $_POST["NouveauMotDePasse"];
 		$IdPers = $_SESSION['USERID'];
 
-		$sql = 'SELECT * FROM WL_Users WHERE UserID = :IdPers';
+		$sql = 'SELECT * FROM wl_users WHERE UserID = :IdPers';
 		$resStat = $mysqlClient->prepare($sql);
 		$resStat->execute(['IdPers' => $IdPers]);
 		$res = $resStat->fetchAll();
 
-		if(password_verify($AncienMotDePasse, $res[0]['MotDePasse']) || password_verify($AncienMotDePasse, $res[0]['resetPswd'])){
+		if(password_verify($AncienMotDePasse, $res[0]['Pswd']) || password_verify($AncienMotDePasse, $res[0]['resetPswd'])){
 			if($Mail != $res[0]['Mail']){
 				$sql = 'SELECT * FROM WL_Users WHERE Mail = :Mail';
 				$resStat = $mysqlClient->prepare($sql);
 				$resStat->execute(['Mail' => $Mail]);
 				$res = $resStat->fetchAll();
 				if(count($res) != 0){
-					header("Location: ChangeCredentialsPage.php?alerte=mailAlreadyUsed");
+					header("Location: ProfilPage.php?alerte=mailAlreadyUsed");
 					return;
 				}
 			}
-	        $sql = 'UPDATE WL_Users SET Mail = :Mail, Pswd = :MotDePasse WHERE UserID = :IdPers';
+			if ($NouveauMotDePasse == "" || $NouveauMotDePasse == null){
+				$NouveauMotDePasse = $AncienMotDePasse;
+			}
+	        $sql = 'UPDATE wl_users SET FirstName = :FirstName, LastName = :LastName, Mail = :Mail, Pswd = :MotDePasse WHERE UserID = :IdPers';
 			$resStat = $mysqlClient->prepare($sql);
-			$resStat->execute(['Mail' => $Mail,
+			$resStat->execute(['FirstName' => $Prenom,
+							   'LastName' => $Nom,
+							   'Mail' => $Mail,
 							   'MotDePasse' => password_hash($NouveauMotDePasse, PASSWORD_DEFAULT),
 							   'IdPers' => $IdPers]);
 			session_destroy();
@@ -50,7 +58,7 @@ include("../inc/constantes.inc.php");?>
 		}
 	    else{
 	        $_SESSION['ORGAEDT_LOGGED_MAIL_FAIL'] = $Mail;
-	        header("Location: ChangeCredentialsPage.php?alerte=wrongMdp");
+	        header("Location: ProfilPage.php?alerte=wrongMdp");
 	    }
 	?>
 </body>     

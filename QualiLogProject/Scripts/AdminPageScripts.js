@@ -25,7 +25,11 @@ function DeleteReservation(reservationId){
     if (r == true) {
         fetch("DeleteReservation.php?reservationId=" + reservationId);
         $("#"+reservationId).remove();
-        document.location.reload(true);
+        
+        console.log($(".Materiel"));
+        if ($(".Materiel").length == 0) {
+            $("#NoReservation").show();
+        }
     }
 }
 
