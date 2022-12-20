@@ -100,7 +100,7 @@ if (!move_uploaded_file($_FILES['fileToUpload']['tmp_name'], TARGET.'/'.$nomImag
  ************************************************************/
 
 /* --- Insertion dans la base de données --- */
-$sql = 'INSERT INTO WL_Equipment (Reference, Name, Version) VALUES (:ref, :name, :version)';
+$sql = 'INSERT INTO wl_equipment (Reference, Name, Version) VALUES (:ref, :name, :version)';
 $resStat = $mysqlClient->prepare($sql);
 $resStat->execute(['ref' => $DeviceRef, 'name' => $DeviceName, 'version' => $DeviceVersion]);
 
