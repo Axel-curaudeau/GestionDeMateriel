@@ -29,7 +29,6 @@ function DeleteReservation(reservationId, userID){
         console.log($(".Materiel"));
         if ($(".Materiel").length == 0) {
             $("#NoReservation").show();
-            console.log(userID);
             $("#UID"+userID).remove();
         }
     }
