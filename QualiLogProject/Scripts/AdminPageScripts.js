@@ -20,7 +20,7 @@ function DeleteMaterial(materialId){
     }
 }
 
-function DeleteReservation(reservationId){
+function DeleteReservation(reservationId, userID){
     var r = confirm("Voulez-vous vraiment supprimer cette réservation ?");
     if (r == true) {
         fetch("DeleteReservation.php?reservationId=" + reservationId);
@@ -29,6 +29,8 @@ function DeleteReservation(reservationId){
         console.log($(".Materiel"));
         if ($(".Materiel").length == 0) {
             $("#NoReservation").show();
+            console.log(userID);
+            $("#UID"+userID).remove();
         }
     }
 }
