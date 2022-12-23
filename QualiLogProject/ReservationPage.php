@@ -79,26 +79,30 @@ include("../inc/constantes.inc.php");?>
             $query_utilisateurs = $mysqlClient->prepare($q_utilisateurs);
             $query_utilisateurs->execute();
 
-            while ($row = $query_utilisateurs->fetch()){ ?>
-                <h3 style="margin-left : 5%;"><?php echo($row['firstname']." ".$row['lastname']." :"); ?></h3></br>          
+            while ($row = $query_utilisateurs->fetch()){ 
+                if ($row['UserID'] != $_SESSION['USERID']) :
+                ?>
+                <h3 id="UID<?php echo($row['UserID'])?>" style="margin-left : 5%;"><?php echo($row['firstname']." ".$row['lastname']." :"); ?></h3></br>          
                 
-                <div class="listeMateriel">
+                <div id="UID<?php echo($row['UserID'])?>" class="listeMateriel">
                     
                     <?php
-                    $q_reservations = "SELECT * FROM WL_Reservation NATURAL JOIN WL_Equipment WHERE UserID = :UserID";
-                    $query_reservations = $mysqlClient->prepare($q_reservations);
-                    $query_reservations->execute(array(
-                        'UserID' => $row['UserID']
-                    )); ?>
+                    
+                        $q_reservations = "SELECT * FROM WL_Reservation NATURAL JOIN WL_Equipment WHERE UserID = :UserID";
+                        $query_reservations = $mysqlClient->prepare($q_reservations);
+                        $query_reservations->execute(array(
+                            'UserID' => $row['UserID']
+                        )); 
+                    ?>
 
                     
                     <?php while($row2 = $query_reservations->fetch()){ ?>
-                        <div id="<?php echo($row2['Reference']); ?> " class="Materiel">
+                        <div id="<?php echo($row2['ReservationID']); ?>" class="Materiel">
                             <img src=<?php echo '"files/'.$row2['Reference'].'.jpg" alt="'.$row2['Name'].'"'; ?> >
                             <div class="DescriptionMateriel">
                                 <div class="nomMateriel">
                                         <p><?php echo ($row2['Name']); ?></p>
-                                        <image src="./img/delete.png" alt=Supprimer onclick="DeleteReservation('<?php echo($row2['ReservationID']); ?>')" style="width:20px;height:20px;"></image>
+                                        <image src="./img/delete.png" alt=Supprimer onclick="DeleteReservation('<?php echo($row2['ReservationID']); ?>', '<?php echo($row2['UserID']); ?>')" style="width:20px;height:20px;"></image>
                                 </div>
                                 <hr>
                                 <div class="versionEtRef">
@@ -127,7 +131,8 @@ include("../inc/constantes.inc.php");?>
                                 </div>
                             </div>
                         </div>
-                    <?php }; ?>
+                    <?php }; 
+                    endif;?>
                 </div>
                 </br>
             <?php }; ?>
