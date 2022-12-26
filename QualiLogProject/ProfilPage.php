@@ -18,7 +18,7 @@ include("../inc/constantes.inc.php");?>
     include('Alertes.php');
     include("../inc/bddconnect.inc.php");
 
-    $sql = "SELECT * FROM WL_Users WHERE Mail = :Mail";
+    $sql = "SELECT * FROM wl_users WHERE Mail = :Mail";
     $query = $mysqlClient->prepare($sql);
     $query->execute(array(
         'Mail' => $_SESSION['MAIL']
