@@ -17,6 +17,7 @@
 # A faire
 - Si trop de matériel, faire une pagination
 - changer le curseur sur la poubelle, et autres boutons de reservation
+- Ajouter fonctionnalité de suppression de compte (pour pouvoir faire des test unitaires sans creer pleins de comptes)
 
 # Ne fonctionne pas
 
