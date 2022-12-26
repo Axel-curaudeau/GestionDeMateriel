@@ -24,7 +24,7 @@ include("../inc/constantes.inc.php");?>
 
     <div class="listeMateriel">
         <?php
-        $q_reservations = "SELECT * FROM WL_Reservation NATURAL JOIN WL_Equipment WHERE UserID = :UserID";
+        $q_reservations = "SELECT * FROM wl_reservation NATURAL JOIN wl_equipment WHERE UserID = :UserID";
         $query_reservations = $mysqlClient->prepare($q_reservations);
         $query_reservations->execute(['UserID' => $_SESSION['USERID']]); ?>
 
@@ -75,7 +75,7 @@ include("../inc/constantes.inc.php");?>
 
         <div class="listeReservations">
             <?php
-            $q_utilisateurs = "SELECT DISTINCT UserID, firstname, lastname FROM WL_Reservation NATURAL JOIN WL_Users";
+            $q_utilisateurs = "SELECT DISTINCT UserID, firstname, lastname FROM wl_reservation NATURAL JOIN wl_users";
             $query_utilisateurs = $mysqlClient->prepare($q_utilisateurs);
             $query_utilisateurs->execute();
 
@@ -88,7 +88,7 @@ include("../inc/constantes.inc.php");?>
                     
                     <?php
                     
-                        $q_reservations = "SELECT * FROM WL_Reservation NATURAL JOIN WL_Equipment WHERE UserID = :UserID";
+                        $q_reservations = "SELECT * FROM wl_reservation NATURAL JOIN wl_equipment WHERE UserID = :UserID";
                         $query_reservations = $mysqlClient->prepare($q_reservations);
                         $query_reservations->execute(array(
                             'UserID' => $row['UserID']

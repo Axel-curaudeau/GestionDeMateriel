@@ -15,8 +15,8 @@
 
 
 # A faire
-- Changer les icônes de chaque page (actuellement le calendrier)
 - Si trop de matériel, faire une pagination
+- changer le curseur sur la poubelle, et autres boutons de reservation
 
 # Ne fonctionne pas
 
