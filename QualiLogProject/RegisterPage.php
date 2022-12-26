@@ -5,7 +5,7 @@ include("../inc/constantes.inc.php")?>
 <html>   
 <head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title>Gestion de matériel | Incription</title>  
+    <title>Gestion de Matériel | Inscription</title>  
     <link rel="stylesheet" href="style/styleW.css" />
     <link href="img/logo.png" rel="shortcut icon" type="image/png">
 </head>    
@@ -25,7 +25,9 @@ include("../inc/constantes.inc.php")?>
             <label for="Mail">Adresse Mail : </label>   
             <input type="email" placeholder="adresse@email.fr" name="Mail" required>
             <label for="MotDePasse">Mot de Passe :</label>   
-            <input type="password" placeholder="Mot de Passe" name="MotDePasse" required> 
+            <input type="password" placeholder="Mot de Passe" name="MotDePasse" required>
+            <label for="ConfirmMotDePasse">Confirmation du Mot de Passe :</label>
+            <input type="password" placeholder="Confirmation Mot de Passe" name="ConfirmMotDePasse" required>
             <button type="submit" class="bouton">Créer un compte</button>
             <p style="margin: 0;"><a class=return>Retour</a></p>
         </div>
