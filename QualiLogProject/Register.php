@@ -44,7 +44,7 @@ include("../inc/constantes.inc.php"); ?>
 
     if($exec) {
         if (isset($_SESSION['MAIL'])) {
-            header("Location: AdminPage.php");
+            header("Location: AdminPageAccounts.php");
         } else {
             header("Location: LoginPage.php");
         }
