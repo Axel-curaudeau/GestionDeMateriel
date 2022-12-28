@@ -6,10 +6,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import org.hibernate.query.sql.internal.SQLQueryParser;
 import org.junit.jupiter.api.*;
 import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestRecette {
     private static EntityManagerFactory emf;
@@ -72,9 +75,9 @@ public class TestRecette {
 
 
             /* --- Suppression de l'utilisateur de la BDD --- */
-            em.getTransaction().begin();
+            tx.begin();
             em.remove(user);
-            em.getTransaction().commit();
+            tx.commit();
         }
 
 
@@ -96,7 +99,7 @@ public class TestRecette {
             public static void deleteUser() {
                 /* --- Suppression de l'utilisateur de la BDD --- */
                 tx.begin();
-                em.createQuery("DELETE FROM wl_users WHERE Mail = '" + user.getMail() + "'").executeUpdate();
+                em.remove(user);
                 tx.commit();
             }
 
@@ -126,11 +129,143 @@ public class TestRecette {
                 mail.setValueAttribute(user.getMail());
                 password.setValueAttribute("wrongPassword");
 
+                // Verify validity of input fields format
+                assertTrue(mail.isValid());
+                assertTrue(password.isValid());
+
                 // click with filled input fields
                 HtmlPage page2 = button.click();
-                System.out.println(page2.asNormalizedText());
+                assertEquals("Gestion de Matériel | Connexion", page2.getTitleText());
+                assertTrue(page2.asNormalizedText().contains("Identifiants incorrects"));
+            }
+
+            @Test
+            @DisplayName("Adresse mail incorrecte")
+            void C02_2() throws IOException {
+                /* --- Accès à la page --- */
+                // Création du client web
+                WebClient webClient = new WebClient();
+                webClient.getOptions().setFetchPolyfillEnabled(true);
+                HtmlPage page = webClient.getPage(Constantes.URL + "LoginPage.php");
+
+                // Vérification du titre de la page
+                assertEquals("Gestion de Matériel | Connexion", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+
+                // Get Form
+                HtmlForm form = page.getForms().get(0);
+
+                // Get input fields
+                HtmlEmailInput mail = form.getInputByName("Mail");
+                HtmlPasswordInput password = form.getInputByName("Password");
+
+                // get submit button
+                HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
+
+                // fill input fields
+                mail.setValueAttribute("wrongMail");
+                password.setValueAttribute(user.getPswd());
+
+                // Verify validity of input fields format
+                assertFalse(mail.isValid());
+                assertTrue(password.isValid());
+
+                // click with filled input fields
+                HtmlPage page2 = button.click();
                 assertEquals("Gestion de Matériel | Connexion", page2.getTitleText());
             }
+
+            @Test
+            @DisplayName("Champs vides")
+            void C02_3() throws IOException {
+                /* --- Accès à la page --- */
+                // Création du client web
+                WebClient webClient = new WebClient();
+                webClient.getOptions().setFetchPolyfillEnabled(true);
+                HtmlPage page = webClient.getPage(Constantes.URL + "LoginPage.php");
+
+                // Vérification du titre de la page
+                assertEquals("Gestion de Matériel | Connexion", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+
+                // Get Form
+                HtmlForm form = page.getForms().get(0);
+
+                // Get input fields
+                HtmlEmailInput mail = form.getInputByName("Mail");
+                HtmlPasswordInput password = form.getInputByName("Password");
+
+                // get submit button
+                HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
+
+                // fill input fields
+                mail.setValueAttribute("");
+                password.setValueAttribute("");
+
+                // Verify validity of input fields format
+                assertFalse(mail.isValid());
+                assertFalse(password.isValid());
+
+                // click with filled input fields
+                HtmlPage page2 = button.click();
+                assertEquals("Gestion de Matériel | Connexion", page2.getTitleText());
+            }
+        }
+
+    }
+
+    @Nested
+    @DisplayName("Inscription")
+    class I {
+        @Test
+        @DisplayName("Inscription réussie (I01)")
+        void I01() throws IOException {
+            wl_users user = new wl_users("John", "Doe", "johndoe@hibernate.com", 1);
+
+            /* --- Accès à la page --- */
+            // Création du client web
+            WebClient webClient = new WebClient();
+            webClient.getOptions().setFetchPolyfillEnabled(true);
+            HtmlPage page = webClient.getPage(Constantes.URL + "RegisterPage.php");
+
+            // Vérification du titre de la page
+            assertEquals("Gestion de matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+            // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+
+            // Get Form
+            HtmlForm form = page.getForms().get(0);
+
+            // Get input fields
+            HtmlTextInput firstName = form.getInputByName("FirstName");
+            HtmlTextInput lastName = form.getInputByName("LastName");
+            HtmlEmailInput mail = form.getInputByName("Mail");
+            HtmlPasswordInput password = form.getInputByName("MotDePasse");
+
+            // get submit button
+            HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
+
+            // fill input fields
+            firstName.setValueAttribute(user.getFirstName());
+            lastName.setValueAttribute(user.getLastName());
+            mail.setValueAttribute(user.getMail());
+            password.setValueAttribute(user.getPswd());
+
+            // Verify validity of input fields format
+            assertTrue(firstName.isValid());
+            assertTrue(lastName.isValid());
+            assertTrue(mail.isValid());
+            assertTrue(password.isValid());
+
+            // click with filled input fields
+            HtmlPage page2 = button.click();
+            assertEquals("Gestion de Matériel | Connexion", page2.getTitleText());
+            // TODO : Ajouter une alerte de succès
+
+            // Vérification de l'ajout en base de données
+            // TODO : Vérifier que l'utilisateur a bien été ajouté en base de données
+
+            /* --- Suppression de l'utilisateur de la BDD --- */
+            tx.begin();
+            em.remove(user);
+            tx.commit();
         }
     }
 }

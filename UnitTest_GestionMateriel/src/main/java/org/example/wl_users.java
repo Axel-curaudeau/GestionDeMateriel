@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public class wl_users {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int UserID;
 
     private String FirstName;
@@ -79,4 +80,27 @@ public class wl_users {
         return LastResetPswd;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        } else if (!(obj instanceof wl_users)) {
+            return false;
+        } else {
+            if (this.UserID != ((wl_users) obj).UserID) {
+                return false;
+            } else if (this.getFirstName() != ((wl_users) obj).getFirstName()) {
+                return false;
+            } else if (this.getLastName() != ((wl_users) obj).getLastName()) {
+                return false;
+            } else if (this.getMail() != ((wl_users) obj).getMail()) {
+                return false;
+            } else if (this.getRegistrationNumber() != ((wl_users) obj).getRegistrationNumber()) {
+                return false;
+            } else if (this.getIsAdmin() != ((wl_users) obj).getIsAdmin()) {
+                return false;
+            }
+            return true;
+        }
+    }
 }
