@@ -39,4 +39,44 @@ public class wl_users {
         this.IsAdmin = IsAdmin;
     }
 
+    public int getUserID() {
+        return UserID;
+    }
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public String getMail() {
+        return Mail;
+    }
+
+    public String getRegistrationNumber() {
+        return RegistrationNumber;
+    }
+
+    public String getHashedPswd() {
+        return Pswd;
+    }
+
+    public String getPswd() {
+        return "user";
+    }
+
+    public int getIsAdmin() {
+        return IsAdmin;
+    }
+
+    public String getResetPswd() {
+        return ResetPswd;
+    }
+
+    public LocalDateTime getLastResetPswd() {
+        return LastResetPswd;
+    }
+
 }
