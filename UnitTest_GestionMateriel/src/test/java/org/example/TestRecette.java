@@ -71,7 +71,6 @@ public class TestRecette {
 
 
             /* --- Tests pour chaque page --- */
-
             for (String page : pages.keySet()) {
                 Page htmlPage = webClient.getPage(Constantes.URL + page);
                 assertEquals(Constantes.URL + pages.get(page), htmlPage.getUrl().toString(), "Error while accessing " + page);
@@ -316,6 +315,108 @@ public class TestRecette {
             tx.begin();
             em.remove(user2);
             tx.commit();
+        }
+
+        @Nested
+        @DisplayName("Inscription refusée (I2)")
+        class I2 {
+            @Test
+            @DisplayName("Adresse mail déjà utilisée (I2_1)")
+            void I2_1() throws IOException {
+                /* --- Création de l'utilisateur dans la BDD --- */
+                tx.begin();
+                wl_users user = new wl_users("John", "Doe", "johndoe@hibernate.com", 1);
+                em.persist(user);
+                tx.commit();
+
+                /* --- Accès à la page --- */
+                // Création du client web
+                WebClient webClient = new WebClient();
+                webClient.getOptions().setFetchPolyfillEnabled(true);
+                HtmlPage page = webClient.getPage(Constantes.URL + "RegisterPage.php");
+
+                // Vérification du titre de la page
+                assertEquals("Gestion de matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+
+                // Get Form
+                HtmlForm form = page.getForms().get(0);
+
+                // Get input fields
+                HtmlTextInput firstName = form.getInputByName("FirstName");
+                HtmlTextInput lastName = form.getInputByName("LastName");
+                HtmlEmailInput mail = form.getInputByName("Mail");
+                HtmlPasswordInput password = form.getInputByName("MotDePasse");
+
+                // get submit button
+                HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
+
+                // fill input fields
+                firstName.setValueAttribute(user.getFirstName());
+                lastName.setValueAttribute(user.getLastName());
+                mail.setValueAttribute(user.getMail());
+                password.setValueAttribute(user.getPswd());
+
+                // Verify validity of input fields format
+                assertTrue(firstName.isValid());
+                assertTrue(lastName.isValid());
+                assertTrue(mail.isValid());
+                assertTrue(password.isValid());
+
+                // click with filled input fields
+                HtmlPage page2 = button.click();
+                assertEquals("Gestion de matériel | Inscription", page2.getTitleText());
+                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+                assertTrue(page2.asNormalizedText().contains("Cette adresse mail est déjà utilisée"));
+
+                /* --- Suppression de l'utilisateur de la BDD --- */
+                tx.begin();
+                em.remove(user);
+                tx.commit();
+            }
+
+            @Test
+            @DisplayName("Champs vides (I2_2)")
+            void I2_2() throws IOException {
+                /* --- Accès à la page --- */
+                // Création du client web
+                WebClient webClient = new WebClient();
+                webClient.getOptions().setFetchPolyfillEnabled(true);
+                HtmlPage page = webClient.getPage(Constantes.URL + "RegisterPage.php");
+
+                // Vérification du titre de la page
+                assertEquals("Gestion de matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+
+                // Get Form
+                HtmlForm form = page.getForms().get(0);
+
+                // Get input fields
+                HtmlTextInput firstName = form.getInputByName("FirstName");
+                HtmlTextInput lastName = form.getInputByName("LastName");
+                HtmlEmailInput mail = form.getInputByName("Mail");
+                HtmlPasswordInput password = form.getInputByName("MotDePasse");
+
+                // get submit button
+                HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
+
+                // fill input fields
+                firstName.setValueAttribute("");
+                lastName.setValueAttribute("");
+                mail.setValueAttribute("");
+                password.setValueAttribute("");
+
+                // Verify validity of input fields format
+                assertFalse(firstName.isValid());
+                assertFalse(lastName.isValid());
+                assertFalse(mail.isValid());
+                assertFalse(password.isValid());
+
+                // click with empty input fields
+                HtmlPage page2 = button.click();
+                assertEquals("Gestion de matériel | Inscription", page2.getTitleText()); // should stay on the same page
+                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+            }
         }
     }
 }

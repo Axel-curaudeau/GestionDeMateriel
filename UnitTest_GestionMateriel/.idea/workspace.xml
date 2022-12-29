@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TestRecette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TestRecette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C$C02.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C$C02.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$G.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$G.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$I.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$I.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette.class" afterDir="false" />
     </list>
@@ -81,21 +82,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HTMLUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="UnitTest_GestionMateriel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.HTMLUnit" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="LoginPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="UnitTest_GestionMateriel" />
       <extension name="coverage">
@@ -107,6 +93,22 @@
       <option name="PACKAGE_NAME" value="org.example" />
       <option name="MAIN_CLASS_NAME" value="org.example.LoginPage" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRecette$I$I2.I2_2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="UnitTest_GestionMateriel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.TestRecette.I" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TestRecette$I$I2" />
+      <option name="METHOD_NAME" value="I2_2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -145,10 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestRecette" />
+        <item itemvalue="JUnit.TestRecette$I$I2.I2_2" />
         <item itemvalue="JUnit.TestRecette$I.I01" />
         <item itemvalue="JUnit.LoginPage" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.HTMLUnit" />
       </list>
     </recent_temporary>
   </component>
