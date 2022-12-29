@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d7714a8c-0d18-4d4b-b5c2-2f8abc50b9f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/wl_users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/wl_users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TestRecette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TestRecette.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/wl_users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/wl_users.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C$C02.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C$C02.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$C.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$I.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/TestRecette$I.class" afterDir="false" />

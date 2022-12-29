@@ -19,6 +19,11 @@ include("../inc/constantes.inc.php"); ?>
     $Mail = $_POST["Mail"];
     $MotDePasse = password_hash($_POST["MotDePasse"], PASSWORD_DEFAULT);
 
+    if ($FirstName == "" || $LastName == "" || $Mail == "" || $MotDePasse == "") {
+        header("Location: RegisterPage.php?alerte=emptyField");
+        return;
+    }
+
     $sql = 'SELECT UserID FROM wl_users WHERE Mail = :Mail';
     $resStat = $mysqlClient->prepare($sql);
     $resStat->execute([

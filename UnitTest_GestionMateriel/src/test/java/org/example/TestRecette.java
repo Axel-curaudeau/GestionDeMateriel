@@ -1,12 +1,16 @@
 package org.example;
 
+import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
 import jakarta.persistence.*;
+import net.sourceforge.htmlunit.xpath.operations.Bool;
 import org.hibernate.Session;
 import org.hibernate.query.sql.internal.SQLQueryParser;
 import org.junit.jupiter.api.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,11 +35,56 @@ public class TestRecette {
     }
 
     @Nested
+    @DisplayName("Fonctionnement général (G)")
+    class G {
+        @Test
+        @DisplayName("Accès aux pages (G1)")
+        void G1() throws IOException {
+            HashMap<String, String> pages = new HashMap<>();   // <relativeUrl, resultUrlWhenNotConnected>
+            pages.put("AddNewDevice.php", "LoginPage.php?alerte=notConnected");
+            pages.put("AddNewReservation.php", "LoginPage.php?alerte=notConnected");
+            pages.put("AdminPageAccounts.php", "LoginPage.php?alerte=notConnected");
+            pages.put("Alertes.php", "Alertes.php");
+            pages.put("ChangeUser.php", "LoginPage.php?alerte=notConnected");
+            pages.put("ChangeUserAdmin.php", "LoginPage.php?alerte=notConnected");
+            pages.put("ChangeUserPage.php", "LoginPage.php?alerte=notConnected");
+            pages.put("Deconnexion.php", "LoginPage.php");
+            pages.put("DeleteMaterial.php", "LoginPage.php?alerte=notConnected");
+            pages.put("DeleteReservation.php", "LoginPage.php?alerte=notConnected");
+            pages.put("DeleteUser.php", "LoginPage.php?alerte=notConnected");
+            pages.put("dispoJSON.php", "dispoJSON.php");
+            pages.put("ForgotPswd.php", "ForgotPswd.php");
+            pages.put("Home.php", "LoginPage.php?alerte=notConnected");
+            pages.put("Login.php", "LoginPage.php?alerte=failConnect");
+            pages.put("LoginPage.php", "LoginPage.php");
+            pages.put("menubar.php", "menubar.php");
+            pages.put("Profil.php", "LoginPage.php?alerte=notConnected");
+            pages.put("ProfilPage.php", "LoginPage.php?alerte=notConnected");
+            pages.put("Register.php", "RegisterPage.php?alerte=emptyField");    // TODO : à modifier sur le site
+            pages.put("RegisterPage.php", "RegisterPage.php");
+            pages.put("ReservationPage.php", "LoginPage.php?alerte=notConnected");
+            pages.put("UpdateResetPswd.php", "ForgotPswd.php?alerte=wrongEmail");
+
+            // Création du client web
+            WebClient webClient = new WebClient();
+            webClient.getOptions().setFetchPolyfillEnabled(true);
+
+
+            /* --- Tests pour chaque page --- */
+
+            for (String page : pages.keySet()) {
+                Page htmlPage = webClient.getPage(Constantes.URL + page);
+                assertEquals(Constantes.URL + pages.get(page), htmlPage.getUrl().toString(), "Error while accessing " + page);
+            }
+        }
+    }
+
+    @Nested
     @DisplayName("Connexion (C)")
     class C {
 
         @Test
-        @DisplayName("Connexion réussie (C01)")
+        @DisplayName("Connexion réussie (C1)")
         void C01() throws IOException {
             /* --- Création de l'utilisateur dans la BDD --- */
             tx.begin();
@@ -80,7 +129,7 @@ public class TestRecette {
 
 
         @Nested
-        @DisplayName("Connexion refusée (C02)")
+        @DisplayName("Connexion refusée (C2)")
         class C02 {
             static wl_users user;
 
@@ -102,7 +151,7 @@ public class TestRecette {
             }
 
             @Test
-            @DisplayName("Mot de passe incorrect (C02_1)")
+            @DisplayName("Mot de passe incorrect (C2_1)")
             void C02_1() throws IOException {
                 /* --- Accès à la page --- */
                 // Création du client web
@@ -138,7 +187,7 @@ public class TestRecette {
             }
 
             @Test
-            @DisplayName("Adresse mail incorrecte (C02_2)")
+            @DisplayName("Adresse mail incorrecte (C2_2)")
             void C02_2() throws IOException {
                 /* --- Accès à la page --- */
                 // Création du client web
@@ -173,7 +222,7 @@ public class TestRecette {
             }
 
             @Test
-            @DisplayName("Champs vides (C02_3)")
+            @DisplayName("Champs vides (C2_3)")
             void C02_3() throws IOException {
                 /* --- Accès à la page --- */
                 // Création du client web
@@ -214,7 +263,7 @@ public class TestRecette {
     @DisplayName("Inscription (I)")
     class I {
         @Test
-        @DisplayName("Inscription réussie (I01)")
+        @DisplayName("Inscription réussie (I1)")
         void I01() throws IOException {
             wl_users user = new wl_users("John", "Doe", "johndoe@hibernate.com", 1);
 
