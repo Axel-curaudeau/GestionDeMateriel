@@ -2,10 +2,8 @@ package org.example;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
+import org.hibernate.Session;
 import org.hibernate.query.sql.internal.SQLQueryParser;
 import org.junit.jupiter.api.*;
 import java.io.IOException;
@@ -33,7 +31,7 @@ public class TestRecette {
     }
 
     @Nested
-    @DisplayName("Connexion")
+    @DisplayName("Connexion (C)")
     class C {
 
         @Test
@@ -104,7 +102,7 @@ public class TestRecette {
             }
 
             @Test
-            @DisplayName("Mot de passe incorrect")
+            @DisplayName("Mot de passe incorrect (C02_1)")
             void C02_1() throws IOException {
                 /* --- Accès à la page --- */
                 // Création du client web
@@ -140,7 +138,7 @@ public class TestRecette {
             }
 
             @Test
-            @DisplayName("Adresse mail incorrecte")
+            @DisplayName("Adresse mail incorrecte (C02_2)")
             void C02_2() throws IOException {
                 /* --- Accès à la page --- */
                 // Création du client web
@@ -175,7 +173,7 @@ public class TestRecette {
             }
 
             @Test
-            @DisplayName("Champs vides")
+            @DisplayName("Champs vides (C02_3)")
             void C02_3() throws IOException {
                 /* --- Accès à la page --- */
                 // Création du client web
@@ -213,7 +211,7 @@ public class TestRecette {
     }
 
     @Nested
-    @DisplayName("Inscription")
+    @DisplayName("Inscription (I)")
     class I {
         @Test
         @DisplayName("Inscription réussie (I01)")
@@ -260,11 +258,14 @@ public class TestRecette {
             // TODO : Ajouter une alerte de succès
 
             // Vérification de l'ajout en base de données
-            // TODO : Vérifier que l'utilisateur a bien été ajouté en base de données
+            Session session = em.unwrap(Session.class);
+            Query query = session.createQuery("from wl_users where Mail = :mail").setParameter("mail", user.getMail());
+            wl_users user2 = (wl_users) ((org.hibernate.query.Query<?>) query).uniqueResult();
+            assertTrue(user.equals(user2));
 
             /* --- Suppression de l'utilisateur de la BDD --- */
             tx.begin();
-            em.remove(user);
+            em.remove(user2);
             tx.commit();
         }
     }

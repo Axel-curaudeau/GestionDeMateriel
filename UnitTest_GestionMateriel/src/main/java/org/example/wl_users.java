@@ -1,6 +1,7 @@
 package org.example;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.NaturalId;
 
 import java.time.LocalDateTime;
 
@@ -9,19 +10,21 @@ public class wl_users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UserID")
     private int UserID;
 
     private String FirstName;
 
     private String LastName;
 
+    @NaturalId
     private String Mail;
 
     private String RegistrationNumber;
 
     private String Pswd;
 
-    private int IsAdmin;
+    private Integer IsAdmin;
 
     private String ResetPswd;
 
@@ -68,7 +71,7 @@ public class wl_users {
         return "user";
     }
 
-    public int getIsAdmin() {
+    public Integer getIsAdmin() {
         return IsAdmin;
     }
 
@@ -87,18 +90,17 @@ public class wl_users {
         } else if (!(obj instanceof wl_users)) {
             return false;
         } else {
-            if (this.UserID != ((wl_users) obj).UserID) {
+            if (!this.getFirstName().equals(((wl_users) obj).getFirstName())) {
                 return false;
-            } else if (this.getFirstName() != ((wl_users) obj).getFirstName()) {
+            } else if (!this.getLastName().equals(((wl_users) obj).getLastName())) {
                 return false;
-            } else if (this.getLastName() != ((wl_users) obj).getLastName()) {
+            } else if (!this.getMail().equals(((wl_users) obj).getMail())) {
                 return false;
-            } else if (this.getMail() != ((wl_users) obj).getMail()) {
-                return false;
-            } else if (this.getRegistrationNumber() != ((wl_users) obj).getRegistrationNumber()) {
-                return false;
-            } else if (this.getIsAdmin() != ((wl_users) obj).getIsAdmin()) {
-                return false;
+                // TODO : try next fields
+            //} else if (!this.getRegistrationNumber().equals(((wl_users) obj).getRegistrationNumber())) {
+            //    return false;
+            //} else if (!this.getIsAdmin().equals(((wl_users) obj).getIsAdmin())) {
+            //    return false;
             }
             return true;
         }
