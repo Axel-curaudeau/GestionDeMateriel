@@ -34,7 +34,7 @@ include("../inc/constantes.inc.php");
         return;
     }
 
-    if (password_verify($Password, $res[0]['Pswd']) || password_verify($Password, $res[0]['resetPswd'])){
+    if (password_verify($Password, $res[0]['Pswd']) || password_verify($Password, $res[0]['ResetPswd'])){
         $_SESSION['USERID'] = $res[0]['UserID'];
         $_SESSION['MAIL'] = $Mail;
         $_SESSION['IsAdmin'] = $res[0]['IsAdmin'];

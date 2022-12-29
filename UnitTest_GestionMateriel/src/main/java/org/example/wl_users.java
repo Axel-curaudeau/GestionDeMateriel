@@ -41,6 +41,7 @@ public class wl_users {
         this.Mail = Mail;
         this.Pswd = "$2y$10$rz4y2mQ8pIJ4CJLfLG3/O.LBJpBQfm5aYoEBoGFEEXh6SGTLPcDAm"; // equiv to "user"
         this.IsAdmin = IsAdmin;
+        this.ResetPswd = "$2y$10$YQeu1K343cOiTSBqb6OPmexOSCA2GQslO7XPwh8sXq7kLX5yxVy1W"; // equiv to "reset"
     }
 
     public int getUserID() {
@@ -75,8 +76,12 @@ public class wl_users {
         return IsAdmin;
     }
 
-    public String getResetPswd() {
+    public String getHashedResetPswd() {
         return ResetPswd;
+    }
+
+    public String getResetPswd() {
+        return "reset";
     }
 
     public LocalDateTime getLastResetPswd() {

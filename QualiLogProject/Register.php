@@ -39,11 +39,9 @@ include("../inc/constantes.inc.php"); ?>
     $res = $mysqlClient->prepare($sql);
     $exec = $res->execute([$FirstName,$LastName,$Mail, $MotDePasse]);
 
-    echo(strlen($MotDePasse));
-
     if($exec) {
-        if (isset($_SESSION['MAIL'])) {
-            header("Location: AdminPage.php");
+        if (isset($_SESSION['IsAdmin'])) {
+            header("Location: AdminPageAccounts.php");
         } else {
             header("Location: LoginPage.php");
         }
