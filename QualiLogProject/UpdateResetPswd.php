@@ -30,7 +30,7 @@ include("../inc/constantes.inc.php"); ?>
     if(count($res) == 0)
     {
         echo($Mail);
-        header("Location: ForgotPswd.php?alerte=mailAlreadyUsed");
+        header("Location: ForgotPswd.php?alerte=wrongEmail");
         return;
     }
     

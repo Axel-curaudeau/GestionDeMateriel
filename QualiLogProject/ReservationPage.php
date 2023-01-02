@@ -141,6 +141,6 @@ include("../inc/constantes.inc.php");?>
 </body>     
 </html>
 
-<script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
-<script src="Scripts/AdminPageScripts.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script src="scripts/AdminPageScripts.js"></script>
 <script src="scripts/returnScript.js"></script>
