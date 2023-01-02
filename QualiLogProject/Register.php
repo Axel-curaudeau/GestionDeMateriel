@@ -43,7 +43,7 @@ include("../inc/constantes.inc.php"); ?>
         if (isset($_SESSION['IsAdmin'])) {
             header("Location: AdminPageAccounts.php");
         } else {
-            header("Location: LoginPage.php");
+            header("Location: LoginPage.php?alerte=registered");
         }
         
     } else {

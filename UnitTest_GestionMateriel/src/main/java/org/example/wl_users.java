@@ -101,7 +101,6 @@ public class wl_users {
                 return false;
             } else if (!this.getMail().equals(((wl_users) obj).getMail())) {
                 return false;
-                // TODO : try next fields
             //} else if (!this.getRegistrationNumber().equals(((wl_users) obj).getRegistrationNumber())) {
             //    return false;
             //} else if (!this.getIsAdmin().equals(((wl_users) obj).getIsAdmin())) {

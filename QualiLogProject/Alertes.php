@@ -83,5 +83,9 @@
         <div class="Alerte" style="background-color: rgb(255,175,175);">
             <p>Erreur lors de l'ajout de la réservation : La période selectionnée se superpose avec une autre réservation !</p>
         </div>
+    <?php elseif($_GET['alerte'] == 'emptyField'): ?>
+        <div class="Alerte" style="background-color: rgb(255,175,175);">
+            <p>Vous n'avez pas rempli tous les champs !</p>
+        </div>
     <?php endif; ?>
 <?php endif; ?>

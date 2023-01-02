@@ -5,6 +5,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.*;
 import jakarta.persistence.*;
 import net.sourceforge.htmlunit.xpath.operations.Bool;
+import net.sourceforge.htmlunit.xpath.operations.Div;
 import org.hibernate.Session;
 import org.hibernate.query.sql.internal.SQLQueryParser;
 import org.junit.jupiter.api.*;
@@ -60,7 +61,6 @@ public class TestRecette {
             pages.put("menubar.php", "menubar.php");
             pages.put("Profil.php", "LoginPage.php?alerte=notConnected");
             pages.put("ProfilPage.php", "LoginPage.php?alerte=notConnected");
-            pages.put("Register.php", "RegisterPage.php?alerte=emptyField");    // TODO : à modifier sur le site
             pages.put("RegisterPage.php", "RegisterPage.php");
             pages.put("ReservationPage.php", "LoginPage.php?alerte=notConnected");
             pages.put("UpdateResetPswd.php", "ForgotPswd.php?alerte=wrongEmail");
@@ -295,7 +295,6 @@ public class TestRecette {
             // click with filled input fields
             HtmlPage page2 = button.click();
             assertEquals("Gestion de Matériel | Accueil", page2.getTitleText());
-            // TODO : changer "resetPswd" pour "ResetPswd" fichier Login.php ligne 37
 
             /* --- Suppression de l'utilisateur dans la BDD --- */
             tx.begin();
@@ -320,8 +319,7 @@ public class TestRecette {
             HtmlPage page = webClient.getPage(Constantes.URL + "RegisterPage.php");
 
             // Vérification du titre de la page
-            assertEquals("Gestion de matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
-            // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+            assertEquals("Gestion de Matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
 
             // Get Form
             HtmlForm form = page.getForms().get(0);
@@ -350,7 +348,6 @@ public class TestRecette {
             // click with filled input fields
             HtmlPage page2 = button.click();
             assertEquals("Gestion de Matériel | Connexion", page2.getTitleText());
-            // TODO : Ajouter une alerte de succès
 
             // Vérification de l'ajout en base de données
             Session session = em.unwrap(Session.class);
@@ -383,8 +380,7 @@ public class TestRecette {
                 HtmlPage page = webClient.getPage(Constantes.URL + "RegisterPage.php");
 
                 // Vérification du titre de la page
-                assertEquals("Gestion de matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
-                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+                assertEquals("Gestion de Matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
 
                 // Get Form
                 HtmlForm form = page.getForms().get(0);
@@ -412,8 +408,7 @@ public class TestRecette {
 
                 // click with filled input fields
                 HtmlPage page2 = button.click();
-                assertEquals("Gestion de matériel | Inscription", page2.getTitleText());
-                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+                assertEquals("Gestion de Matériel | Inscription", page2.getTitleText());
                 assertTrue(page2.asNormalizedText().contains("Cette adresse mail est déjà utilisée"));
 
                 /* --- Suppression de l'utilisateur de la BDD --- */
@@ -432,8 +427,7 @@ public class TestRecette {
                 HtmlPage page = webClient.getPage(Constantes.URL + "RegisterPage.php");
 
                 // Vérification du titre de la page
-                assertEquals("Gestion de matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
-                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+                assertEquals("Gestion de Matériel | Inscription", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
 
                 // Get Form
                 HtmlForm form = page.getForms().get(0);
@@ -461,8 +455,7 @@ public class TestRecette {
 
                 // click with empty input fields
                 HtmlPage page2 = button.click();
-                assertEquals("Gestion de matériel | Inscription", page2.getTitleText()); // should stay on the same page
-                // TODO : Changer titre pour "Gestion de Matériel | Inscription"
+                assertEquals("Gestion de Matériel | Inscription", page2.getTitleText()); // should stay on the same page
             }
         }
     }
@@ -530,6 +523,85 @@ public class TestRecette {
 
 
             /* --- Suppression de l'utilisateur de la BDD --- */
+            tx.begin();
+            em.remove(user);
+            tx.commit();
+        }
+    }
+
+    @Nested
+    @DisplayName("Réserver un Appareil (RA)")
+    class RA {
+        @Test
+        @Disabled
+        @DisplayName("Réservation valide (RA1)")
+        void RA1() throws IOException, InterruptedException {
+            /* --- Création de l'utilisateur dans la BDD --- */
+            tx.begin();
+            wl_users user = new wl_users("John", "Doe", "johndoe@hibernate.com", 1);
+            em.persist(user);
+            tx.commit();
+
+
+            /* --- Création de l'appareil dans la BDD --- */
+            tx.begin();
+            wl_equipment equip = new wl_equipment("Reference", "Nom", "1.0", "0123456789");
+            em.persist(equip);
+            tx.commit();
+
+
+            /* --- Accès à la page --- */
+            // Création du client web
+            WebClient webClient = new WebClient();
+            webClient.getOptions().setFetchPolyfillEnabled(true);
+            webClient.getOptions().setThrowExceptionOnScriptError(false);
+            HtmlPage page = webClient.getPage(Constantes.URL + "LoginPage.php");
+            assertEquals("Gestion de Matériel | Connexion", page.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+
+            // Connexion
+            HtmlForm form = page.getForms().get(0);
+            HtmlEmailInput mail = form.getInputByName("Mail");
+            HtmlPasswordInput password = form.getInputByName("Password");
+            HtmlButton button = form.getFirstByXPath("/html/body/form/div/button");
+            mail.setValueAttribute(user.getMail());
+            password.setValueAttribute(user.getPswd());
+            HtmlPage page2 = button.click();
+            assertEquals("Gestion de Matériel | Accueil", page2.getTitleText(), "Le titre de la page n'est pas correct (mauvaise page ?)");
+
+            // Equipement Infos
+            HtmlDivision materiel = page2.getHtmlElementById(equip.getReference());
+            assertEquals(equip.getName(), ((HtmlParagraph) page2.getFirstByXPath("//*[@id=\"" + equip.getReference() + "\"]/div/div[1]/p")).getTextContent(), "Le nom de l'appareil n'est pas correct");
+            assertEquals(equip.getVersion(), ((HtmlParagraph) page2.getFirstByXPath("//*[@id=\"" + equip.getReference() + "\"]/div/div[2]/div[1]/p[2]")).getTextContent(), "La version de l'appareil n'est pas correcte");
+            assertEquals(equip.getReference(), ((HtmlParagraph) page2.getFirstByXPath("//*[@id=\"" + equip.getReference() + "\"]/div/div[2]/div[2]/p[2]")).getTextContent(), "La référence de l'appareil n'est pas correcte");
+
+
+            /* --- Réservation --- */
+            HtmlSelect calendar = page2.getFirstByXPath("//*[@id=\"body\"]/div[last()]");
+            System.out.println(calendar.asXml());
+
+            //HtmlInput buttonRes = materiel.getFirstByXPath("//*[@id=\"input" + equip.getReference() + "\"]");
+            //buttonRes.focus();
+
+            //System.out.println(page2.asXml());
+
+            //System.out.println((String) page2.getFirstByXPath("//*[@id=\"body\"]/div[@style]/div[2]/div[1]/table/tbody/tr[3]/td[2]"));
+            //System.out.println(((HtmlDivision) page2.getFirstByXPath("//*[@id=\"body\"]/div[last()]/div[1]")).asXml());
+
+            //System.out.println(page2.getFirstByXPath("//*[@id=\"body\"]/div[@style]/div[2]/div[1]/table/tbody/tr[3]/td[2]"));
+            //*[@id="body"]/div[@style]/div[2]/div[1]/table/tbody/tr[3]/td[2]
+            //*[@id="body"]/div[@style]/div[2]/div[1]/table/tbody/tr[3]/td[6]
+
+            //DomElement buttonRes = materiel.getFirstByXPath("//*[@id=\"input" + equip.getReference() + "\"]");
+            //HtmlPage new_page = buttonRes.click();
+            //System.out.println(page2.asXml());
+
+            /* --- Suppression des données de la BDD --- */
+            // Suppression de l'appareil de la BDD
+            tx.begin();
+            em.remove(equip);
+            tx.commit();
+
+            // Suppression de l'utilisateur de la BDD
             tx.begin();
             em.remove(user);
             tx.commit();
