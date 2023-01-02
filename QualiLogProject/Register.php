@@ -25,6 +25,11 @@ include("../inc/constantes.inc.php"); ?>
         return;
     }
 
+    if ($FirstName == "" || $LastName == "" || $Mail == "" || $MotDePasse == "") {
+        header("Location: RegisterPage.php?alerte=emptyField");
+        return;
+    }
+
     $sql = 'SELECT UserID FROM wl_users WHERE Mail = :Mail';
     $resStat = $mysqlClient->prepare($sql);
     $resStat->execute([
@@ -40,13 +45,11 @@ include("../inc/constantes.inc.php"); ?>
     $res = $mysqlClient->prepare($sql);
     $exec = $res->execute([$FirstName,$LastName,$Mail, $MotDePasse]);
 
-    echo(strlen($MotDePasse));
-
     if($exec) {
-        if (isset($_SESSION['MAIL'])) {
+        if (isset($_SESSION['IsAdmin'])) {
             header("Location: AdminPageAccounts.php");
         } else {
-            header("Location: LoginPage.php");
+            header("Location: LoginPage.php?alerte=registered");
         }
         
     } else {

@@ -19,6 +19,22 @@ public class wl_equipment {
         this.PhoneNumber = PhoneNumber;
     }
 
+    public String getReference() {
+        return Reference;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public String getVersion() {
+        return Version;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
     public wl_equipment() {
 
     }
