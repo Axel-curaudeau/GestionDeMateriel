@@ -26,8 +26,6 @@ include("../inc/constantes.inc.php")?>
             <input type="email" placeholder="adresse@email.fr" name="Mail" required>
             <label for="MotDePasse">Mot de Passe :</label>   
             <input type="password" placeholder="Mot de Passe" name="MotDePasse" required>
-            <label for="ConfirmMotDePasse">Confirmation du Mot de Passe :</label>
-            <input type="password" placeholder="Confirmation Mot de Passe" name="ConfirmMotDePasse" required>
             <button type="submit" class="bouton">Créer un compte</button>
             <p style="margin: 0;"><a class=return>Retour</a></p>
         </div>
