@@ -18,6 +18,12 @@ include("../inc/constantes.inc.php"); ?>
     $LastName = $_POST['LastName'];
     $Mail = $_POST["Mail"];
     $MotDePasse = password_hash($_POST["MotDePasse"], PASSWORD_DEFAULT);
+    $ConfirmMotDePasse = password_hash($_POST["ConfirmMotDePasse"], PASSWORD_DEFAULT);
+
+    if ($_POST["MotDePasse"] != $_POST["ConfirmMotDePasse"]) {
+        header("Location: RegisterPage.php?alerte=wrongMdp");
+        return;
+    }
 
     if ($FirstName == "" || $LastName == "" || $Mail == "" || $MotDePasse == "") {
         header("Location: RegisterPage.php?alerte=emptyField");
