@@ -40,8 +40,8 @@ $target_dir = "../files/";
 // Constantes
 define('TARGET', 'files');      // Repertoire cible
 define('MAX_SIZE', 200000);     // Taille max en octets du fichier
-define('REQUIRED_WIDTH', 500);       // Largeur max de l'image en pixels
-define('REQUIRED_HEIGHT', 500);      // Hauteur max de l'image en pixels
+define('REQUIRED_WIDTH', 500);       // Largeur de l'image en pixels
+define('REQUIRED_HEIGHT', 500);      // Hauteur de l'image en pixels
 
 // Tableaux de donnees
 $tabExt = array('jpg');    // Extensions autorisees

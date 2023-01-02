@@ -533,7 +533,7 @@ public class TestRecette {
     @DisplayName("Réserver un Appareil (RA)")
     class RA {
         @Test
-        @Disabled
+        @Disabled // not finished
         @DisplayName("Réservation valide (RA1)")
         void RA1() throws IOException, InterruptedException {
             /* --- Création de l'utilisateur dans la BDD --- */
